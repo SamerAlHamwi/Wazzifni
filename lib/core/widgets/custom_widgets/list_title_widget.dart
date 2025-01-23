@@ -21,7 +21,7 @@ class TitleListWidget extends StatelessWidget {
         children: [
           Text(
             title,
-            style: AppText.fontSizeNormalTextStyle.copyWith(
+            style: AppText.fontSizeLargeTextStyle.copyWith(
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -29,7 +29,7 @@ class TitleListWidget extends StatelessWidget {
               onPressed: onTap,
               child: Text(
                 'عرض الكل',
-                style: AppText.fontSizeSmallTextStyle.copyWith(
+                style: AppText.fontSizeNormalTextStyle.copyWith(
                     color: AppColors.gold
                 ),
               )

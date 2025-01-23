@@ -52,10 +52,10 @@ class AppAssets {
   static const notifications = 'assets/icons/home/notifications.png';
 
   ///Navigation Icons
-  static const homeNav = 'assets/icons/navigation_bar/home.png';
-  static const searchNav = 'assets/icons/navigation_bar/job.png';
-  static const saveNav = 'assets/icons/navigation_bar/save.png';
-  static const profileNav = 'assets/icons/navigation_bar/profile.png';
+  static const homeNav = 'assets/icons/navigation_bar/home-icon.svg';
+  static const searchNav = 'assets/icons/navigation_bar/job-icon.svg';
+  static const saveNav = 'assets/icons/navigation_bar/save-icon.svg';
+  static const profileNav = 'assets/icons/navigation_bar/profile-icon.svg';
 
 
 

@@ -8,6 +8,7 @@ class AppColors {
   static const Color secondaryColor = Color(0xFFFF9228);
   static const Color darkText = Color(0xFF4A4A4A);
   static const Color subWhite = Color(0xFFD9D9D9);
+  static const Color navInActiveColor = Color(0xFF93B7CD);
   static const Color card1 = Color(0xFFFFCDD5);
   static const Color card2 = Color(0xFFDFD9FF);
   static const Color card3 = Color(0xFFDBF6D4);

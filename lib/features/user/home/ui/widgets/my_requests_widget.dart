@@ -21,7 +21,7 @@ class MyRequestsWidget extends StatelessWidget {
         children: [
           Text(
             'طلباتي',
-            style: AppText.fontSizeNormalTextStyle.copyWith(
+            style: AppText.fontSizeLargeTextStyle.copyWith(
               fontWeight: FontWeight.w600,
             ),
           ),

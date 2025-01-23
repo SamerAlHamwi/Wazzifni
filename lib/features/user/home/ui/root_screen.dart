@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wazzifni/core/constants/appcolors.dart';
 import 'package:wazzifni/features/user/home/ui/home_screen.dart';
 import 'package:wazzifni/features/user/saved_jobs/ui/saved_jobs_screen.dart';
@@ -8,14 +9,16 @@ import 'package:wazzifni/features/user/search/ui/search_screen.dart';
 import '../../../../core/constants/app_assets.dart';
 import '../../profile/profile/ui/profile_screen.dart';
 
+
 class UserRootScreen extends StatefulWidget {
   const UserRootScreen({super.key});
 
   @override
-  _UserRootScreenState createState() => _UserRootScreenState();
+  State<UserRootScreen> createState() => _UserRootScreenState();
 }
 
 class _UserRootScreenState extends State<UserRootScreen> {
+
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
@@ -44,28 +47,31 @@ class _UserRootScreenState extends State<UserRootScreen> {
         unselectedItemColor: AppColors.black,
         items: [
           BottomNavigationBarItem(
-            icon: _buildNavIcon(AppAssets.homeNav),
+            icon: _buildNavIcon(AppAssets.homeNav,0),
             label: '',
           ),
           BottomNavigationBarItem(
-              icon: _buildNavIcon(AppAssets.searchNav),
+              icon: _buildNavIcon(AppAssets.searchNav,1),
               label: ''),
           BottomNavigationBarItem(
-              icon: _buildNavIcon(AppAssets.saveNav),
+              icon: _buildNavIcon(AppAssets.saveNav,2),
               label: ''),
           BottomNavigationBarItem(
-              icon: _buildNavIcon(AppAssets.profileNav),
+              icon: _buildNavIcon(AppAssets.profileNav,3),
               label: ''),
         ],
       ),
     );
   }
 
-  Widget _buildNavIcon(String assetPath) {
-    return Image.asset(
+  Widget _buildNavIcon(String assetPath, int index) {
+    return SvgPicture.asset(
       assetPath,
-      height: 35,
+      height: 25,
       width: 35,
+      color: _selectedIndex == index ? AppColors.primaryColor : AppColors.navInActiveColor,
     );
   }
+
 }
+
