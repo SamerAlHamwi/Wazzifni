@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String? labelText;
   final String? hintText;
+  final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final int maxLines;
   final bool isWithBorder;
@@ -19,6 +20,7 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     this.hintText,
     this.labelText,
+    this.suffixIcon,
     this.keyboardType,
     this.maxLines = 1,
     this.isWithBorder = true,
@@ -70,6 +72,7 @@ class CustomTextField extends StatelessWidget {
                   hintStyle: AppText.fontSizeNormalTextStyle.copyWith(
                     color: AppColors.grey,
                   ),
+                  suffixIcon: suffixIcon,
                 ),
                 maxLines: maxLines,
                 style: AppText.fontSizeNormalTextStyle,

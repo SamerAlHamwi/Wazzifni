@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wazzifni/features/user/profile/add_skills/ui/widgets/skills_widget.dart';
 
 import '../../../../../core/common/style/gaps.dart';
 import '../../../../../core/common/style/padding_insets.dart';
@@ -15,16 +16,7 @@ class AddSkillScreen extends StatefulWidget {
 }
 
 class _AddSkillScreenState extends State<AddSkillScreen> {
-  final List<String> skills = [
-    'قائد فريق',
-    'عمل جماعي',
-    'رؤية',
-    'مهارات التواصل الجيدة',
-    'انكليزية',
-    'مسؤولية'
-  ];
 
-  final List<String> selectedSkills = [];
 
   @override
   Widget build(BuildContext context) {
@@ -56,52 +48,9 @@ class _AddSkillScreenState extends State<AddSkillScreen> {
 
             Gaps.vGap2,
             // Skill Tags
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Wrap(
-                spacing: 8.0,
-                runSpacing: 8.0,
-                children: skills
-                    .map(
-                      (skill) => InkWell(
-                        onTap: () {
-                          if (selectedSkills.contains(skill)) {
-                            selectedSkills.remove(skill);
-                          } else {
-                            selectedSkills.add(skill);
-                          }
-                          setState(() {});
-                        },
-                        child: Chip(
-                          label: Text(
-                            skill,
-                            style: AppText.fontSizeNormalTextStyle.copyWith(
-                              color: selectedSkills.contains(skill)
-                                  ? AppColors.white
-                                  : AppColors.black,
-                            ),
-                          ),
-                          backgroundColor: selectedSkills.contains(skill)
-                              ? AppColors.primaryColor
-                              : Colors.grey[200],
-                          deleteIcon: selectedSkills.contains(skill)
-                              ? Icon(
-                                  Icons.close,
-                                  color: selectedSkills.contains(skill)
-                                      ? AppColors.white
-                                      : AppColors.black,
-                                  size: 16,
-                                )
-                              : const SizedBox(),
-                          onDeleted: () {
-                            selectedSkills.remove(skill);
-                            setState(() {});
-                          },
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: SkillsWidget(),
             ),
             Gaps.vGap4,
             Row(

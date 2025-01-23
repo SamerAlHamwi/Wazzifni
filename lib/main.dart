@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wazzifni/features/user/auth/welcome/ui/welcome_screen.dart';
 import 'core/constants/AppTheme.dart';
 import 'core/constants/Keys.dart';
 import 'core/constants/app_settings.dart';
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Wazzifni',
       theme: AppTheme.theme,
-      home: const UserRootScreen(),
+      home: const WelcomeScreen(),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,

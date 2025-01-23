@@ -78,7 +78,7 @@ class _CustomWrapExpansionTileState extends State<CustomWrapExpansionTile> {
               ],
           ),
         ),
-        const Divider(),
+        const Divider(thickness: 1.5,),
       ],
     );
   }

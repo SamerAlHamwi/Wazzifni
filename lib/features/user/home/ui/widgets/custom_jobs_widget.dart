@@ -21,7 +21,7 @@ class CustomJobsWidget extends StatelessWidget {
         Padding(
           padding: PaddingInsets.normalPaddingHorizontal,
           child: SizedBox(
-            height: 160,
+            height: 165,
             width: 100.w,
             child: ListView.builder(
                 itemCount: 3,

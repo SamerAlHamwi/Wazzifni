@@ -30,7 +30,7 @@ class MyRequestsWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 36.w,
+                width: 42.w,
                 padding: const EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   gradient: AppColors.primaryGradient,
@@ -53,6 +53,7 @@ class MyRequestsWidget extends StatelessWidget {
                       Gaps.vGap1,
                       Text(
                         'عدد الطلبات المقدمة',
+                        textAlign: TextAlign.center,
                         style: AppText.fontSizeNormalTextStyle.copyWith(
                             fontWeight: FontWeight.bold,
                             color: AppColors.primaryColor
@@ -70,7 +71,7 @@ class MyRequestsWidget extends StatelessWidget {
               ),
               Gaps.hGap2,
               Container(
-                width: 36.w,
+                width: 42.w,
                 padding: const EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   gradient: AppColors.primaryGradient,
@@ -93,6 +94,7 @@ class MyRequestsWidget extends StatelessWidget {
                       Gaps.vGap1,
                       Text(
                         'عدد العروض المستلمة',
+                        textAlign: TextAlign.center,
                         style: AppText.fontSizeNormalTextStyle.copyWith(
                             fontWeight: FontWeight.bold,
                             color: AppColors.primaryColor

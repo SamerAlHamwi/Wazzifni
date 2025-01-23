@@ -13,7 +13,6 @@ class AppTheme {
     primaryColorLight: AppColors.primaryColor,
     canvasColor: Colors.white,
     unselectedWidgetColor: Colors.grey,
-
     textTheme: textTheme,
     appBarTheme: appBarTheme,
     primaryTextTheme: textTheme,
@@ -35,10 +34,12 @@ class AppTheme {
             foregroundColor:
                 MaterialStateProperty.all<Color>(AppColors.primaryColor),
             textStyle: MaterialStateProperty.all<TextStyle>(subtitle2),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    side: const BorderSide(color: AppColors.primaryColor)))));
+            // shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            //     RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(10.0),
+            //         side: const BorderSide(color: AppColors.primaryColor)))
+        )
+    );
   }
 
   static ElevatedButtonThemeData elevatedButtonThemeData() {

@@ -2,19 +2,17 @@
 
 
 import 'package:flutter/material.dart';
-// import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
 import 'package:wazzifni/core/constants/app_textStyle.dart';
 import 'package:wazzifni/core/constants/appcolors.dart';
 import 'package:wazzifni/core/utils/Navigation/Navigation.dart';
 import 'package:wazzifni/core/widgets/custom_widgets/custom_wrap_expansion_tile.dart';
-import 'package:wazzifni/features/user/privacy_policy/ui/widgets/privacy_policy_item.dart';
-import '../../../../core/common/models/box_model.dart';
 import '../../../../core/common/models/dropdown_model.dart';
 import '../../../../core/widgets/custom_widgets/custom_button.dart';
 import '../../../../core/widgets/custom_widgets/custom_dropdown.dart';
 import '../../../../core/widgets/custom_widgets/custom_expansion_tile.dart';
+import '../../../../core/widgets/custom_widgets/custom_slider_widget.dart';
 import '../../../../core/widgets/pages/custom_appbar_page.dart';
 import '../../auth/complete_account/ui/complete_account_screen.dart';
 
@@ -28,7 +26,6 @@ class FilterScreen extends StatefulWidget {
 
 class _FilterScreenState extends State<FilterScreen> {
 
-  // SfRangeValues _salaryRange = const SfRangeValues(13.0, 25.0);
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +46,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   'هذا الأسبوع',
                   'هذا الشهر'
                 ],
+                isExpanded: true,
               ),
               Gaps.vGap1,
               const CustomExpansionTile(
@@ -58,6 +56,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   'نصف عن بعد',
                   'عن بعد',
                 ],
+                isExpanded: true,
               ),
               Gaps.vGap1,
               const CustomWrapExpansionTile(
@@ -129,54 +128,7 @@ class _FilterScreenState extends State<FilterScreen> {
                 ],
               ),
               Gaps.vGap2,
-              Theme(
-                data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-                child: ExpansionTile(
-                  title: const Text(
-                    "الراتب المتوقع",
-                    style: TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
-                  ),
-                  trailing: const Icon(Icons.expand_less, color: Colors.black), // Custom expand icon
-                  maintainState: true,
-                  children: [
-                    // Column(
-                    //   children: [
-                    //     SfRangeSlider(
-                    //       min: 0.0,
-                    //       max: 100.0,
-                    //       values: _salaryRange,
-                    //       interval: 20,
-                    //       showTicks: false,
-                    //       showLabels: false,
-                    //       enableTooltip: false,
-                    //       minorTicksPerInterval: 1,
-                    //       onChanged: (SfRangeValues values){
-                    //         setState(() {
-                    //           _salaryRange = values;
-                    //         });
-                    //       },
-                    //       activeColor: AppColors.primaryColor,
-                    //       inactiveColor: AppColors.subWhite,
-                    //     ),
-                    //     // Salary Labels
-                    //     Padding(
-                    //       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    //       child: Row(
-                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //         children: [
-                    //           Text("\$${_salaryRange.start.toInt()}k",
-                    //               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                    //           Text("\$${_salaryRange.end.toInt()}k",
-                    //               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                    //         ],
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                  ],
-                ),
-              ),
+              const CustomSliderWidget(),
               Gaps.vGap2,
               CustomButton(
                 text: 'موافقة ومتابعة',

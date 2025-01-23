@@ -34,6 +34,7 @@ class HomeAppBar extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Gaps.vGap4,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -87,8 +88,8 @@ class HomeAppBar extends StatelessWidget {
                     Navigation.push(const FilterScreen());
                   },
                   child: Container(
-                    height: 48,
-                    width: 48,
+                    height: 56,
+                    width: 56,
                     decoration: BoxDecoration(
                         gradient: AppColors.secondaryGradient,
                         borderRadius: BorderRadius.circular(8)

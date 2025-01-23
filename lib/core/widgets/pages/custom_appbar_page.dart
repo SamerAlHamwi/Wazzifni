@@ -17,17 +17,15 @@ class AppBarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
-      body: SafeArea(
-        child: Column(
-          children: [
-            CustomAppBar(
-              title: title,
-            ),
-            Expanded(
-              child: body
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          CustomAppBar(
+            title: title,
+          ),
+          Expanded(
+            child: body
+          ),
+        ],
       ),
     );
   }

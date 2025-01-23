@@ -6,6 +6,7 @@ import 'package:wazzifni/features/user/home/ui/home_screen.dart';
 import 'package:wazzifni/features/user/saved_jobs/ui/saved_jobs_screen.dart';
 import 'package:wazzifni/features/user/search/ui/search_screen.dart';
 import '../../../../core/constants/app_assets.dart';
+import '../../profile/profile/ui/profile_screen.dart';
 
 class UserRootScreen extends StatefulWidget {
   const UserRootScreen({super.key});
@@ -21,7 +22,7 @@ class _UserRootScreenState extends State<UserRootScreen> {
     const HomePage(),
     const SearchScreen(),
     const SavedJobsScreen(),
-    const Center(child: Text('Profile Screen', style: TextStyle(fontSize: 20))),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {

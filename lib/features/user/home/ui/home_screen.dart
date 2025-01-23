@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
                   const LatestJobsWidget(),
                   Gaps.vGap4,
                   const MyRequestsWidget(),
-                  Gaps.vGap4,
+                  Gaps.vGap2,
                   const CustomJobsWidget(),
                 ],
               ),

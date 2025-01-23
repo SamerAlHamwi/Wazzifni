@@ -6,10 +6,16 @@ import '../../constants/appcolors.dart';
 
 class CustomExpansionTile extends StatefulWidget {
   const CustomExpansionTile(
-      {super.key, required this.items, required this.title});
+      {super.key,
+        required this.items,
+        required this.title,
+        this.isExpanded = false
+      });
 
   final List<String> items;
   final String title;
+  final bool isExpanded;
+
 
   @override
   State<CustomExpansionTile> createState() => _CustomExpansionTileState();
@@ -32,7 +38,7 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
         Theme(
           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
           child: ExpansionTile(
-              initiallyExpanded: false,
+              initiallyExpanded: widget.isExpanded,
               textColor: AppColors.black,
               collapsedTextColor: AppColors.black,
               iconColor: AppColors.black,
@@ -62,7 +68,7 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
                 ),
               )),
         ),
-        const Divider(),
+        const Divider(thickness: 1.5,),
       ],
     );
   }

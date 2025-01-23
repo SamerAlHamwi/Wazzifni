@@ -151,7 +151,7 @@ class JobCardWidget extends StatelessWidget {
     );
   }
 
-  getAttributeWidth(){
+  double getAttributeWidth(){
     if(width != null){
       return (width!/4);
     }else{

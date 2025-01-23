@@ -47,6 +47,7 @@ dependencies:
   pinput: ^5.0.0
 
 
+
   # utils
   easy_localization:
   url_launcher:
@@ -103,6 +104,10 @@ flutter:
     - assets/lang/
     - assets/images/
     - assets/icons/
+    - assets/icons/navigation_bar/
+    - assets/icons/profile/
+    - assets/icons/home/
+    - assets/icons/settings/
 
   fonts:
     - family: Tajawal
