@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
@@ -65,56 +66,56 @@ class _CompleteAccountScreenState extends State<CompleteAccountScreen> {
               ),
               Gaps.vGap4,
               ProfileInfoWidget(
-                title: 'تفاصيل الحساب',
+                title: 'account_info'.tr(),
                 iconPath: AppAssets.profileIcon,
                 onTap: () {
                   Navigation.push(const AboutMeScreen());
                 },
               ),
               ProfileInfoWidget(
-                title: 'السيرة الذاتية',
+                title: 'cv'.tr(),
                 iconPath: AppAssets.cvIcon,
                 onTap: () {
                   Navigation.push(const AddResumeScreen());
                 },
               ),
               ProfileInfoWidget(
-                title: 'الخبرة الوظيفية',
+                title: 'experience'.tr(),
                 iconPath: AppAssets.jobIcon,
                 onTap: () {
                   Navigation.push(AddWorkScreen());
                 },
               ),
               ProfileInfoWidget(
-                title: 'التعليم',
+                title: 'education'.tr(),
                 iconPath: AppAssets.schoolIcon,
                 onTap: () {
                   Navigation.push(AddEducationScreen());
                 },
               ),
               ProfileInfoWidget(
-                title: 'مستوى التعليم',
+                title: 'education_level'.tr(),
                 iconPath: AppAssets.schoolIcon,
                 onTap: () {
                   Navigation.push(AddEducationLevelScreen());
                 },
               ),
               ProfileInfoWidget(
-                title: 'المهارات',
+                title: 'skills'.tr(),
                 iconPath: AppAssets.skillsIcon,
                 onTap: () {
-                  Navigation.push(AddSkillScreen());
+                  Navigation.push(const AddSkillScreen());
                 },
               ),
               ProfileInfoWidget(
-                title: 'اللغات',
+                title: 'languages'.tr(),
                 iconPath: AppAssets.languageIcon,
                 onTap: () {
                   Navigation.push(AddLanguageScreen());
                 },
               ),
               ProfileInfoWidget(
-                title: 'التقديرات',
+                title: 'awards'.tr(),
                 iconPath: AppAssets.goodIcon,
                 onTap: () {
                   Navigation.push(AddAppreciationScreen());
@@ -122,7 +123,7 @@ class _CompleteAccountScreenState extends State<CompleteAccountScreen> {
               ),
               Gaps.vGap4,
               CustomButton(
-                text: 'حفظ ومتابعة',
+                text: 'save_and_continue'.tr(),
                 onTap: (){
                   Navigation.pushReplacement(const UserRootScreen());
                 },

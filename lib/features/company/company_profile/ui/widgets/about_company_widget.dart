@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/common/style/padding_insets.dart';
@@ -30,7 +31,7 @@ class AboutCompany extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                'حول الشركة',
+                'company_info'.tr(),
                 style: AppText.fontSizeNormalTextStyle.copyWith(
                   color: AppColors.white,
                   fontWeight: FontWeight.w600,

@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
@@ -41,14 +42,14 @@ class ApplyCvScreen extends StatelessWidget {
               const JobHeaderWidget(),
               Gaps.vGap2,
               Text(
-                'رفع السيرة الذاتية',
+                'upload_cv'.tr(),
                 style: AppText.fontSizeMediumTextStyle.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Gaps.vGap1,
               Text(
-                'أضف السيرة الذاتية للتقدم إلى الوظيفة',
+                'cv_info'.tr(),
                 style: AppText.fontSizeNormalTextStyle,
               ),
               Gaps.vGap2,
@@ -67,7 +68,7 @@ class ApplyCvScreen extends StatelessWidget {
                         ),
                         Gaps.hGap2,
                         Text(
-                            "تحميل السيرة الذاتية",
+                            'upload_cv'.tr(),
                             style: AppText.fontSizeNormalTextStyle
                         ),
                       ],
@@ -77,7 +78,7 @@ class ApplyCvScreen extends StatelessWidget {
               ),
               Gaps.vGap4,
               Text(
-                'معلومات إضافية',
+                'extra_info'.tr(),
                 style: AppText.fontSizeMediumTextStyle.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -86,14 +87,14 @@ class ApplyCvScreen extends StatelessWidget {
               CustomTextField(
                 controller: TextEditingController(),
                 maxLines: 5,
-                hintText: 'اشرج لماذا أنت الشخص المناسب لهذه الوظيفة',
+                hintText: 'explain_why'.tr(),
               ),
               Gaps.vGap4,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomButton(
-                    text: 'تقدم الآن',
+                    text: 'apply_now'.tr(),
                     onTap: (){
                       Navigation.push(const ApplyCv2Screen());
                     },

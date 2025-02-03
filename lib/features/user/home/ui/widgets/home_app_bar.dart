@@ -1,10 +1,9 @@
 
 
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/constants/app_assets.dart';
 import 'package:wazzifni/features/user/notifications/ui/notifications_screen.dart';
-
 import '../../../../../core/common/style/gaps.dart';
 import '../../../../../core/common/style/padding_insets.dart';
 import '../../../../../core/constants/app_textStyle.dart';
@@ -67,7 +66,7 @@ class HomeAppBar extends StatelessWidget {
             ),
             Gaps.vGap2,
             Text(
-              'ابحث عن وظيفة أحلامك \n هنا!',
+              'home_hint'.tr(),
               style: AppText.fontSizeLargeTextStyle.copyWith(
                   fontWeight: FontWeight.w600,
                   color: AppColors.white
@@ -79,7 +78,7 @@ class HomeAppBar extends StatelessWidget {
                 Expanded(
                   child: CustomTextField(
                     controller: TextEditingController(),
-                    hintText: 'البحث',
+                    hintText: 'search'.tr(),
                   ),
                 ),
                 Gaps.hGap2,

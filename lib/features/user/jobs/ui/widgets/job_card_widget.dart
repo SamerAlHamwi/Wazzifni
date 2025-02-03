@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/common/style/gaps.dart';
 import '../../../../../core/common/style/padding_insets.dart';
@@ -75,14 +76,14 @@ class JobCardWidget extends StatelessWidget {
                           PopupMenuItem(
                             value: 'edit',
                             child: Text(
-                              'تعديل الوظيفة',
+                              'edit_job'.tr(),
                               style: AppText.fontSizeNormalTextStyle,
                             ),
                           ),
                           PopupMenuItem(
                             value: 'delete',
                             child: Text(
-                              'حذف الوظيفة',
+                              'delete_job'.tr(),
                               style: AppText.fontSizeNormalTextStyle,
                             ),
                           ),

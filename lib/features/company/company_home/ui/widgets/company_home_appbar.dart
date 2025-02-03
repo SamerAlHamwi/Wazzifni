@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/constants/app_assets.dart';
 import 'package:wazzifni/features/user/notifications/ui/notifications_screen.dart';
@@ -71,18 +72,18 @@ class CompanyHomeAppBar extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  const CustomProgressBar(
-                    title: 'الوظائف قيد التقدم',
+                  CustomProgressBar(
+                    title: 'jobs_in_progress'.tr(),
                     progress: 3,
                   ),
                   Gaps.vGap2,
-                  const CustomProgressBar(
-                    title: 'الوظائف المقدم إليها',
+                  CustomProgressBar(
+                    title: 'applied_jobs'.tr(),
                     progress: 6,
                   ),
                   Gaps.vGap2,
-                  const CustomProgressBar(
-                    title: 'الوظائف المغلقة',
+                  CustomProgressBar(
+                    title: 'closed_jobs'.tr(),
                     progress: 1,
                   ),
                 ],

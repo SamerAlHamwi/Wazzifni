@@ -1,6 +1,6 @@
 
 
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
@@ -89,7 +89,7 @@ class NotificationCard extends StatelessWidget {
                     )
                 ),
                 CustomButton(
-                  text: 'التفاصيل',
+                  text: 'info'.tr(),
                   width: 30.w,
                   height: 35,
                   onTap: (){

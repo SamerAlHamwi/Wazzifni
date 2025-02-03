@@ -2,12 +2,15 @@
 
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
 import 'package:wazzifni/core/constants/app_assets.dart';
 import 'package:wazzifni/core/constants/appcolors.dart';
+import 'package:wazzifni/core/utils/Navigation/Navigation.dart';
+import 'package:wazzifni/features/company/company_home/ui/company_root_screen.dart';
 import '../../../../../core/constants/app_textStyle.dart';
 import '../../../../../core/widgets/custom_widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_widgets/custom_textfield.dart';
@@ -42,8 +45,9 @@ class _CompleteCompanyAccountScreenState extends State<CompleteCompanyAccountScr
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Gaps.vGap5,
               Text(
-                'اكمل معلوماتك',
+                'complete_your_info'.tr(),
                 style: AppText.fontSizeExtraLargeTextStyle,
               ),
               Gaps.vGap2,
@@ -70,17 +74,17 @@ class _CompleteCompanyAccountScreenState extends State<CompleteCompanyAccountScr
               Gaps.vGap4,
               CustomTextField(
                 controller: nameController,
-                labelText: 'نوع العمل',
+                labelText: 'job_type'.tr(),
               ),
               Gaps.vGap2,
               CustomTextField(
                 controller: companyController,
-                labelText: 'مكان الشركة',
+                labelText: 'company_location'.tr(),
               ),
               Gaps.vGap2,
               CustomTextField(
                 controller: companyController,
-                labelText: 'الموقع الاإلكتروني (إن وجد)',
+                labelText: 'company_website'.tr(),
               ),
               Gaps.vGap2,
               SizedBox(
@@ -92,7 +96,7 @@ class _CompleteCompanyAccountScreenState extends State<CompleteCompanyAccountScr
                       child: CustomTextField(
                           controller: startController,
                           keyboardType: TextInputType.number,
-                          labelText: 'تاريخ تأسيس الشركة'
+                          labelText: 'company_establishment_date'.tr()
                       ),
                     ),
                     Gaps.hGap2,
@@ -100,7 +104,7 @@ class _CompleteCompanyAccountScreenState extends State<CompleteCompanyAccountScr
                       child: CustomTextField(
                           controller: endController,
                           keyboardType: TextInputType.number,
-                          labelText: 'عدد الموظفين'
+                          labelText: 'number_of_employees'.tr()
                       ),
                     ),
                   ],
@@ -109,7 +113,7 @@ class _CompleteCompanyAccountScreenState extends State<CompleteCompanyAccountScr
               Gaps.vGap2,
               CustomTextField(
                   controller: aboutController,
-                  labelText: 'حول الشركة',
+                  labelText: 'company_info'.tr(),
                   maxLines: 6,
               ),
               Gaps.vGap2,
@@ -117,7 +121,7 @@ class _CompleteCompanyAccountScreenState extends State<CompleteCompanyAccountScr
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'معرض الشركة',
+                    'company_gallery'.tr(),
                     style: AppText.fontSizeNormalTextStyle.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -149,9 +153,9 @@ class _CompleteCompanyAccountScreenState extends State<CompleteCompanyAccountScr
               ),
               Gaps.vGap4,
               CustomButton(
-                text: 'حفظ ومتابعة',
+                text: 'save_and_continue'.tr(),
                 onTap: (){
-
+                  Navigation.pushReplacement(const CompanyRootScreen());
                 },
               ),
               Gaps.vGap4,

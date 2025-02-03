@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/common/style/gaps.dart';
@@ -20,7 +21,7 @@ class _SavedJobsScreenState extends State<SavedJobsScreen> {
   @override
   Widget build(BuildContext context) {
     return AppBarPage(
-      title: 'الوظائف المحفوظة',
+      title: 'saved_jobs'.tr(),
       body: SingleChildScrollView(
         child: Padding(
           padding: PaddingInsets.normalPaddingAll,

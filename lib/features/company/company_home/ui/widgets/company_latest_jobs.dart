@@ -1,6 +1,7 @@
 
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/common/style/padding_insets.dart';
@@ -16,7 +17,7 @@ class LatestCompanyJobsWidget extends StatelessWidget {
     return Column(
       children: [
         TitleListWidget(
-          title: 'وظائفنا',
+          title: 'our_jobs'.tr(),
           onTap: (){},
         ),
         Padding(

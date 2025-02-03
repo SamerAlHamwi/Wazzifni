@@ -1,11 +1,15 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wazzifni/core/boilerplate/create_model/widgets/create_model.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
 import 'package:wazzifni/core/constants/appcolors.dart';
 import 'package:wazzifni/core/utils/Navigation/Navigation.dart';
+import 'package:wazzifni/features/user/auth/login/data/repository/auth_repository.dart';
+import '../../../../../core/boilerplate/create_model/cubits/create_model_cubit.dart';
 import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/constants/app_textStyle.dart';
 import '../../../../../core/widgets/custom_widgets/custom_button.dart';
@@ -13,6 +17,7 @@ import '../../../../../core/widgets/custom_widgets/custom_textfield.dart';
 import '../../../../../core/widgets/pages/background_page.dart';
 import '../../signup/ui/signup_screen.dart';
 import '../../verify_phone/ui/verify_phone_screen.dart';
+import '../data/use_case/login_use_case.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -25,6 +30,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
 
   TextEditingController controller = TextEditingController();
+  late CreateModelCubit loginCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +61,11 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Gaps.vGap2,
             Text(
-              'مرحبا بعودتك',
+              'welcome_back'.tr(),
               style: AppText.fontSizeExtraLargeTextStyle,
             ),
             Text(
-              'قم بتسجيل الدخول إلى حسابك',
+              'login_hint'.tr(),
               style: AppText.fontSizeNormalTextStyle,
             ),
             Gaps.vGap12,
@@ -90,26 +96,41 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(
                     child: CustomTextField(
                       controller: controller,
-                      labelText: 'رقم الهاتف'
+                      labelText: 'phone_number'.tr()
                     ),
                   ),
                 ],
               ),
             ),
             Gaps.vGap4,
-            CustomButton(
-              text: 'تسجيل الدخول',
-              onTap: (){
-                Navigation.push(const VerifyPhoneScreen());
+            CreateModel(
+              onCubitCreated: (cubit)=> loginCubit = cubit,
+              useCaseCallBack: (model) {
+                return LoginUseCase(AuthRepository()).call(
+                  params: LoginParams(
+                    dialCode: '+964',
+                    phoneNumber: controller.text.trim(),
+                    userType: 1,
+                  ),
+                );
               },
+              onSuccess: (model) {
+                Navigator.pop(context);
+              },
+              withValidation: false,
+              child: CustomButton(
+                text: 'login'.tr(),
+                onTap: (){
+                  Navigation.push(const VerifyPhoneScreen());
+                },
+              ),
             ),
             Gaps.vGap2,
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'ليس لديك حساب حتى الآن؟  ',
+                  'no_account'.tr(),
                   style: AppText.fontSizeNormalTextStyle,
                 ),
                 InkWell(
@@ -117,8 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigation.push(const SignUpScreen());
                   },
                   child: Text(
-                    'انشاء حساب',
-                    // textDirection: TextDecoration.underline,
+                    'register'.tr(),
                     style: AppText.fontSizeNormalTextStyle.copyWith(
                       color: AppColors.secondaryColor,
                     ),

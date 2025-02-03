@@ -1,11 +1,10 @@
 
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
-import 'package:wazzifni/core/constants/app_textStyle.dart';
-import 'package:wazzifni/core/constants/appcolors.dart';
 import 'package:wazzifni/core/utils/Navigation/Navigation.dart';
 import 'package:wazzifni/core/widgets/custom_widgets/custom_wrap_expansion_tile.dart';
 import '../../../../core/common/models/dropdown_model.dart';
@@ -30,7 +29,7 @@ class _FilterScreenState extends State<FilterScreen> {
   @override
   Widget build(BuildContext context) {
     return AppBarPage(
-      title: 'الفلترة',
+      title: 'filter'.tr(),
       body: SingleChildScrollView(
         child: Padding(
           padding: PaddingInsets.extraBigPaddingAll,
@@ -38,51 +37,50 @@ class _FilterScreenState extends State<FilterScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const CustomExpansionTile(
-                title: "آخر تحديث",
+              CustomExpansionTile(
+                title: "last_update".tr(),
                 items: [
-                  'كل الوقت',
-                  'اليوم',
-                  'هذا الأسبوع',
-                  'هذا الشهر'
+                  'all_time'.tr(),
+                  'today'.tr(),
+                  'this_week'.tr(),
+                  'this_month'.tr()
                 ],
                 isExpanded: true,
               ),
               Gaps.vGap1,
-              const CustomExpansionTile(
-                title: "مكان العمل",
+              CustomExpansionTile(
+                title: "work_location".tr(),
                 items: [
-                  'دوام مكتبي',
-                  'نصف عن بعد',
-                  'عن بعد',
+                  'onsite'.tr(),
+                  'hybrid'.tr(),
+                  'remote'.tr(),
                 ],
                 isExpanded: true,
               ),
               Gaps.vGap1,
-              const CustomWrapExpansionTile(
-                title: "نوع العمل",
+              CustomWrapExpansionTile(
+                title: "job_type".tr(),
                 items: [
-                  "دوام كامل",
-                  "دوام جزئي",
-                  "مشروع فقط",
-                  "عقد",
-                  "شراكة استراتيجية"
+                  "full_time".tr(),
+                  "part_time".tr(),
+                  "only_project".tr(),
+                  "contract".tr(),
                 ],
               ),
               Gaps.vGap1,
-              const CustomWrapExpansionTile(
-                title: "الموقع الوظيفي",
+              CustomWrapExpansionTile(
+                title: "job_location".tr(),
                 items: [
-                  "قائد فريق",
-                  "محترف",
-                  "مبتدئ",
-                  "مدير",
-                  "متدرب"
+                  "team_leader".tr(),
+                  "professional".tr(),
+                  "beginner".tr(),
+                  "manager".tr(),
+                  "trainee".tr()
                 ],
               ),
               Gaps.vGap1,
               CustomDropdown(
-                labelText: 'الفئة',
+                labelText: 'category'.tr(),
                 items: [
                   DropDownItem(id: 1, name: 'برمجة'),
                   DropDownItem(id: 2, name: 'تصميم'),
@@ -94,7 +92,7 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
               Gaps.vGap2,
               CustomDropdown(
-                labelText: 'الفئة الفرعية',
+                labelText: 'sub_category'.tr(),
                 items: [
                   DropDownItem(id: 1, name: 'ويب'),
                   DropDownItem(id: 2, name: 'موبايل'),
@@ -106,7 +104,7 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
               Gaps.vGap2,
               CustomDropdown(
-                labelText: 'الموقع',
+                labelText: 'location'.tr(),
                 items: [
                   DropDownItem(id: 1, name: 'بغداد'),
                   DropDownItem(id: 2, name: 'الموصل'),
@@ -117,8 +115,8 @@ class _FilterScreenState extends State<FilterScreen> {
                 },
               ),
               Gaps.vGap1,
-              const CustomExpansionTile(
-                title: "الخبرة",
+              CustomExpansionTile(
+                title: "experience".tr(),
                 items: [
                   'بدون خبرة',
                   'أقل من سنة',
@@ -128,14 +126,14 @@ class _FilterScreenState extends State<FilterScreen> {
                 ],
               ),
               Gaps.vGap2,
-              const CustomRangeSliderWidget(
-                title: 'الراتب المتوقع',
+              CustomRangeSliderWidget(
+                title: 'expected_salary'.tr(),
                 max: 25,
                 min: 13,
               ),
               Gaps.vGap2,
               CustomButton(
-                text: 'موافقة ومتابعة',
+                text: 'continue'.tr(),
                 onTap: (){
                   Navigation.push(const CompleteAccountScreen());
                 },

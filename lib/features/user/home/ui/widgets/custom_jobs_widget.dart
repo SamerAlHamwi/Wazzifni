@@ -1,6 +1,7 @@
 
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/common/style/padding_insets.dart';
@@ -15,7 +16,7 @@ class CustomJobsWidget extends StatelessWidget {
     return Column(
       children: [
         TitleListWidget(
-          title: 'وظائف ضمن اختصاصك',
+          title: 'jobs_in_your_category'.tr(),
           onTap: (){},
         ),
         Padding(

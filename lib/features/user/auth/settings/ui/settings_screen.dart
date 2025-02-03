@@ -1,6 +1,7 @@
 
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
@@ -24,7 +25,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return AppBarPage(
-      title: 'الإعدادات',
+      title: 'settings'.tr(),
       body: SingleChildScrollView(
         child: Padding(
           padding: PaddingInsets.extraBigPaddingAll,
@@ -51,7 +52,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                         Gaps.hGap2,
                         Text(
-                          'الوضع الليلي',
+                          'night_mode'.tr(),
                           style: AppText.fontSizeNormalTextStyle,
                         )
                       ],
@@ -114,7 +115,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           ),
                           Gaps.hGap2,
                           Text(
-                            'تسجيل الخروج',
+                            'logout'.tr(),
                             style: AppText.fontSizeNormalTextStyle,
                           )
                         ],

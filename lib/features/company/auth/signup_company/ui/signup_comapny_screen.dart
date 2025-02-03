@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
@@ -49,17 +50,17 @@ class SignUpCompanyScreen extends StatelessWidget {
             ),
             Gaps.vGap2,
             Text(
-              'انشاء حساب شركة',
+              'register_as_company'.tr(),
               style: AppText.fontSizeExtraLargeTextStyle,
             ),
             Gaps.vGap2,
             CustomTextField(
                 controller: nameController,
-                labelText: 'اسم الشركة'
+                labelText: 'company_name'.tr()
             ),
             Gaps.vGap2,
             CustomDropdown(
-              labelText: 'الموقع',
+              labelText: 'location'.tr(),
               items: [
                 DropDownItem(id: 1, name: 'بغداد'),
                 DropDownItem(id: 2, name: 'الموصل'),
@@ -72,11 +73,11 @@ class SignUpCompanyScreen extends StatelessWidget {
             Gaps.vGap2,
             CustomTextField(
                 controller: codeController,
-                labelText: 'رمز الدعوة (إن وجد)'
+                labelText: 'invitation_code'.tr()
             ),
             Gaps.vGap4,
             CustomButton(
-              text: 'انشاء حساب',
+              text: 'register'.tr(),
               onTap: (){
                 Navigation.push(const CompleteCompanyAccountScreen());
               },

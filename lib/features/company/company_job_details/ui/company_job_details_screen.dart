@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
@@ -45,20 +46,20 @@ class CompanyJobDetails extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const CompanyInfoBox(
-                    title: 'الموقع الوظيفي',
-                    subTitle: 'محترف',
+                  CompanyInfoBox(
+                    title: 'job_location'.tr(),
+                    subTitle: 'professional'.tr(),
                     iconPath: AppAssets.job,
                   ),
                   Gaps.hGap2,
-                  const CompanyInfoBox(
-                    title: 'نوع الوظيفة',
-                    subTitle: 'دوام كامل',
+                  CompanyInfoBox(
+                    title: 'job_type'.tr(),
+                    subTitle: 'full_time'.tr(),
                     iconPath: AppAssets.caseIcon,
                   ),
                   Gaps.hGap2,
-                  const CompanyInfoBox(
-                    title: 'الراتب',
+                  CompanyInfoBox(
+                    title: 'salary'.tr(),
                     subTitle: '1000\$',
                     iconPath: AppAssets.salary,
                   ),
@@ -74,7 +75,7 @@ class CompanyJobDetails extends StatelessWidget {
                 children: [
                   SizedBox(width: 100.w,),
                   Text(
-                    'الموقع',
+                    'location'.tr(),
                     style: AppText.fontSizeMediumTextStyle.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -96,7 +97,7 @@ class CompanyJobDetails extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'معلومات إضافية',
+                    'extra_info'.tr(),
                     style: AppText.fontSizeLargeTextStyle.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -110,14 +111,14 @@ class CompanyJobDetails extends StatelessWidget {
                 children: [
                   SizedBox(width: 100.w,),
                   Text(
-                    'الشهادة',
+                    'education_level'.tr(),
                     style: AppText.fontSizeMediumTextStyle.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Gaps.vGap1,
                   Text(
-                    'بكالوريوس',
+                    'bachelor'.tr(),
                     style: AppText.fontSizeNormalTextStyle,
                   ),
                 ],
@@ -135,7 +136,7 @@ class CompanyJobDetails extends StatelessWidget {
                 children: [
                   SizedBox(width: 100.w,),
                   Text(
-                    'الخبرة',
+                    'experience'.tr(),
                     style: AppText.fontSizeMediumTextStyle.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -149,7 +150,7 @@ class CompanyJobDetails extends StatelessWidget {
               ),
               Gaps.vGap2,
               CustomButton(
-                text: 'تقدم الآن',
+                text: 'apply_now'.tr(),
                 onTap: (){
                   Navigation.push(const ApplyCvScreen());
                 },

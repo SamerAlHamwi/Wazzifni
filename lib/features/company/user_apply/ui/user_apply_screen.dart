@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/features/company/user_apply/ui/widgets/user_apply_appbar.dart';
 import '../../../../core/common/style/gaps.dart';
@@ -30,7 +31,7 @@ class CompanyUserApplyScreen extends StatelessWidget {
                     CustomTextField(
                       controller: TextEditingController(text: 'أنا الشخص المناسب لهذه الوظيفة'),
                       maxLines: 3,
-                      labelText: 'معلومات التقدم',
+                      labelText: 'apply_info'.tr(),
                       isEnabled: false,
                     ),
                     Gaps.vGap2,
@@ -42,7 +43,7 @@ class CompanyUserApplyScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CustomButton(
-                          text: 'التواصل مع الموظف',
+                          text: 'call_employee'.tr(),
                           onTap: (){
 
                           },

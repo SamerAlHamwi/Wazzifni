@@ -1,4 +1,5 @@
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
@@ -7,11 +8,14 @@ import 'package:wazzifni/features/user/privacy_policy/ui/widgets/privacy_policy_
 import '../../../../core/common/models/box_model.dart';
 import '../../../../core/widgets/custom_widgets/custom_button.dart';
 import '../../../../core/widgets/pages/custom_appbar_page.dart';
+import '../../../company/auth/complete_company/ui/complete_company_screen.dart';
 import '../../auth/complete_account/ui/complete_account_screen.dart';
 
 
 class PrivacyPolicyScreen extends StatelessWidget {
-  PrivacyPolicyScreen({super.key});
+  PrivacyPolicyScreen({super.key,this.isCompany = false});
+
+  final bool isCompany;
 
   final List<BoxModel> items = [
     BoxModel(id: 1, title: 'خصوصية المستخدم', description: 'نحن نقدر خصوصيتك وملتزمون بحماية بياناتك الشخصية. تنطبق هذه السياسة على جميع البيانات التي نجمعها عند استخدامك لتطبيقنا.'),
@@ -24,7 +28,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBarPage(
-      title: 'سياسة الخصوصية',
+      title: 'privacy_policy'.tr(),
       body: SingleChildScrollView(
         child: Padding(
           padding: PaddingInsets.extraBigPaddingAll,
@@ -38,9 +42,13 @@ class PrivacyPolicyScreen extends StatelessWidget {
               )),
               Gaps.vGap2,
               CustomButton(
-                text: 'موافقة ومتابعة',
+                text: 'agree_and_continue'.tr(),
                 onTap: (){
-                  Navigation.push(const CompleteAccountScreen());
+                  if(isCompany){
+                    Navigation.push(const CompleteCompanyAccountScreen());
+                  }else{
+                    Navigation.push(const CompleteAccountScreen());
+                  }
                 },
               ),
 

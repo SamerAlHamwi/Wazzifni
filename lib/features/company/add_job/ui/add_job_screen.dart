@@ -1,6 +1,7 @@
 
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
@@ -21,7 +22,7 @@ class AddJobScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBarPage(
-      title: 'إضافة طلب توظيف',
+      title: 'add_job_request'.tr(),
       body: SingleChildScrollView(
         child: Padding(
           padding: PaddingInsets.extraBigPaddingAll,
@@ -31,52 +32,51 @@ class AddJobScreen extends StatelessWidget {
             children: [
               CustomTextField(
                   controller: TextEditingController(),
-                  labelText: 'اسم الوظيفة',
+                  labelText: 'job_name'.tr(),
                   isRequired: true,
               ),
               Gaps.vGap2,
               CustomTextField(
                 controller: TextEditingController(),
-                labelText: 'وصف العمل',
+                labelText: 'job_description'.tr(),
                 maxLines: 3,
                 isRequired: true,
               ),
               Gaps.vGap1,
-              const CustomWrapExpansionTile(
-                title: "نوع العمل",
+              CustomWrapExpansionTile(
+                title: "job_type".tr(),
                 items: [
-                  "دوام كامل",
-                  "دوام جزئي",
-                  "مشروع فقط",
-                  "عقد",
-                  "شراكة استراتيجية"
+                  "full_time".tr(),
+                  "part_time".tr(),
+                  "only_project".tr(),
+                  "contract".tr(),
                 ],
                 isRequired: true,
                 isExpanded: true,
               ),
               Gaps.vGap1,
-              const CustomWrapExpansionTile(
-                title: "الموقع الوظيفي",
+              CustomWrapExpansionTile(
+                title: "job_location".tr(),
                 items: [
-                  "قائد فريق",
-                  "محترف",
-                  "مبتدئ",
-                  "مدير",
-                  "متدرب"
+                  "team_leader".tr(),
+                  "professional".tr(),
+                  "beginner".tr(),
+                  "manager".tr(),
+                  "trainee".tr(),
                 ],
                 isRequired: true,
                 isExpanded: true,
               ),
               Gaps.vGap1,
-              const CustomRangeSliderWidget(
-                title: 'الراتب المتوقع',
+              CustomRangeSliderWidget(
+                title: 'expected_salary'.tr(),
                 max: 25,
                 min: 13,
                 isRequired: true,
               ),
               Gaps.vGap2,
               CustomButton(
-                text: 'متابعة',
+                text: 'continue'.tr(),
                 onTap: (){
                   Navigation.push(const ExtraAddJobScreen());
                 },

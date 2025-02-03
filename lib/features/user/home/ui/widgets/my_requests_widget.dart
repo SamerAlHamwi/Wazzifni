@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/common/style/gaps.dart';
@@ -20,7 +21,7 @@ class MyRequestsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'طلباتي',
+            'my_requests'.tr(),
             style: AppText.fontSizeLargeTextStyle.copyWith(
               fontWeight: FontWeight.w600,
             ),
@@ -52,7 +53,7 @@ class MyRequestsWidget extends StatelessWidget {
                       ),
                       Gaps.vGap1,
                       Text(
-                        'عدد الطلبات المقدمة',
+                        'num_of_requested'.tr(),
                         textAlign: TextAlign.center,
                         style: AppText.fontSizeNormalTextStyle.copyWith(
                             fontWeight: FontWeight.bold,
@@ -93,7 +94,7 @@ class MyRequestsWidget extends StatelessWidget {
                       ),
                       Gaps.vGap1,
                       Text(
-                        'عدد العروض المستلمة',
+                        'num_of_received'.tr(),
                         textAlign: TextAlign.center,
                         style: AppText.fontSizeNormalTextStyle.copyWith(
                             fontWeight: FontWeight.bold,

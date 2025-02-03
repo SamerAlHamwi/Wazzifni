@@ -3,6 +3,7 @@
 
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
 import 'package:wazzifni/features/user/notifications/ui/widgets/notification_card.dart';
@@ -20,9 +21,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const AppBarPage(
-      title: 'الاشعارات',
-      body: SingleChildScrollView(
+    return AppBarPage(
+      title: 'notifications'.tr(),
+      body: const SingleChildScrollView(
         child: Padding(
           padding: PaddingInsets.extraBigPaddingAll,
           child: Column(

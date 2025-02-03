@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
@@ -13,7 +14,9 @@ import '../../../privacy_policy/ui/privacy_policy_screen.dart';
 
 
 class VerifyPhoneScreen extends StatefulWidget {
-  const VerifyPhoneScreen({super.key});
+  const VerifyPhoneScreen({super.key,this.isCompany = false});
+
+  final bool isCompany;
 
   @override
   State<VerifyPhoneScreen> createState() => _VerifyPhoneScreenState();
@@ -49,11 +52,11 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
             ),
             Gaps.vGap8,
             Text(
-              'ادخل رمز التحقق',
+              'enter_verification_code'.tr(),
               style: AppText.fontSizeExtraLargeTextStyle,
             ),
             Text(
-              'لقد قمنا بإرسال رمز تحقق إلى رقمك',
+              'sent_code'.tr(),
               style: AppText.fontSizeNormalTextStyle,
             ),
             Text(
@@ -74,9 +77,9 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
             ),
             Gaps.vGap4,
             CustomButton(
-              text: 'متابعة',
+              text: 'continue'.tr(),
               onTap: (){
-                Navigation.push(PrivacyPolicyScreen());
+                Navigation.push(PrivacyPolicyScreen(isCompany: widget.isCompany,));
               },
             ),
             Gaps.vGap2,
@@ -85,8 +88,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
 
               },
               child: Text(
-                'إعادة ارسال رمز التحقق',
-                // textDirection: TextDecoration.underline,
+                're_send_code'.tr(),
                 style: AppText.fontSizeNormalTextStyle.copyWith(
                   color: AppColors.secondaryColor,
                 ),

@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
@@ -24,7 +25,7 @@ class _ApplicationDetailsScreenState extends State<ApplicationDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return AppBarPage(
-      title: 'طلب التوظيف',
+      title: 'job_request'.tr(),
       body: SingleChildScrollView(
         child: Padding(
           padding: PaddingInsets.extraBigPaddingAll,
@@ -86,7 +87,7 @@ class _ApplicationDetailsScreenState extends State<ApplicationDetailsScreen> {
                       const Divider(),
                       Gaps.vGap1,
                       Text(
-                        'تفاصيل الوظيفة',
+                        'job_request_info'.tr(),
                         style: AppText.fontSizeMediumTextStyle.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -108,14 +109,14 @@ class _ApplicationDetailsScreenState extends State<ApplicationDetailsScreen> {
                       const Divider(),
                       Gaps.vGap1,
                       Text(
-                        'تفاصيل الإرسال',
+                        'request_info'.tr(),
                         style: AppText.fontSizeMediumTextStyle.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Gaps.vGap2,
                       Text(
-                          '• السيرة الذاتية',
+                          '• ${'cv'.tr()}',
                         style: AppText.fontSizeNormalTextStyle,
                       ),
                       Gaps.vGap2,
@@ -128,7 +129,7 @@ class _ApplicationDetailsScreenState extends State<ApplicationDetailsScreen> {
               ),
               Gaps.vGap4,
               CustomButton(
-                  text: 'التقدم إلى المزيد من الوظائف',
+                  text: 'apply_to_more'.tr(),
                   onTap: (){
 
                   }

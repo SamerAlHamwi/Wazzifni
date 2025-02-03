@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/common/style/gaps.dart';
@@ -48,11 +49,11 @@ class LoginCompanyScreen extends StatelessWidget {
             ),
             Gaps.vGap2,
             Text(
-              'مرحبا بعودتك',
+              'welcome_back'.tr(),
               style: AppText.fontSizeExtraLargeTextStyle,
             ),
             Text(
-              'اعثر على موظفك المميز بنقرة',
+              'find_employee'.tr(),
               style: AppText.fontSizeNormalTextStyle,
             ),
             Gaps.vGap12,
@@ -83,7 +84,7 @@ class LoginCompanyScreen extends StatelessWidget {
                   Expanded(
                     child: CustomTextField(
                         controller: controller,
-                        labelText: 'رقم الهاتف'
+                        labelText: 'phone_number'.tr()
                     ),
                   ),
                 ],
@@ -91,9 +92,9 @@ class LoginCompanyScreen extends StatelessWidget {
             ),
             Gaps.vGap4,
             CustomButton(
-              text: 'تسجيل الدخول',
+              text: 'login'.tr(),
               onTap: (){
-                Navigation.push(const VerifyPhoneScreen());
+                Navigation.push(const VerifyPhoneScreen(isCompany: true,));
               },
             ),
             Gaps.vGap2,
@@ -102,7 +103,7 @@ class LoginCompanyScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'ليس لديك حساب شركة حتى الآن؟  ',
+                  'no_company_account'.tr(),
                   style: AppText.fontSizeNormalTextStyle,
                 ),
                 InkWell(
@@ -110,7 +111,7 @@ class LoginCompanyScreen extends StatelessWidget {
                     Navigation.push(SignUpCompanyScreen());
                   },
                   child: Text(
-                    'انشاء حساب شركة',
+                    'register_as_company'.tr(),
                     style: AppText.fontSizeNormalTextStyle.copyWith(
                       color: AppColors.secondaryColor,
                     ),

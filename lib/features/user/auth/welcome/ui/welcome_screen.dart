@@ -2,6 +2,7 @@
 
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
@@ -55,19 +56,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
             Gaps.vGap8,
             Text(
-              'أهلاً وسهلاً',
+              'welcome'.tr(),
               style: AppText.fontSizeExtraLargeTextStyle,
             ),
             Gaps.vGap2,
             CustomButton(
-              text: 'موظف',
+              text: 'employee'.tr(),
               onTap: (){
                 Navigation.push(const LoginScreen());
               },
             ),
             Gaps.vGap1,
             CustomButton(
-              text: 'شركة',
+              text: 'company'.tr(),
               isSecondaryGradient: true,
               onTap: (){
                 Navigation.push(LoginCompanyScreen());
@@ -75,7 +76,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
             Gaps.vGap1,
             CustomButton(
-              text: 'الأيدي العاملة الأجنبية',
+              text: 'foreign_labor'.tr(),
               isWithGradient: false,
               buttonColor: AppColors.subWhite,
               onTap: (){
@@ -84,7 +85,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
             Gaps.vGap2,
             Text(
-              'استكشف جميع الأدوار الوظيفية المثيرة بناءاً علي اهتمامك وتخصصك الدراسي',
+              'welcome_hint'.tr(),
               textAlign: TextAlign.center,
               style: AppText.fontSizeNormalTextStyle,
             )

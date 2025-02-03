@@ -5,6 +5,7 @@ class AppSettings{
   static const AppName = 'وظفني';
   static bool debug = false;
   static String appFont = 'Cairo';
+  static String BASE_URL = 'http://147.93.46.66:8080/';
 
 }
 

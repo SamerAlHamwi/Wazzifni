@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,13 +24,13 @@ class UserApplyInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'معلومات الموظف',
+          'user_info'.tr(),
           style: AppText.fontSizeNormalTextStyle.copyWith(
             fontWeight: FontWeight.w600,
           ),
         ),
         AccountInfoWidget(
-          title: 'تفاصيل الحساب',
+          title: 'account_info'.tr(),
           iconPath: AppAssets.profileIcon,
           isWithEdit: false,
           onTap: () {
@@ -40,7 +41,7 @@ class UserApplyInfo extends StatelessWidget {
           ),
         ),
         AccountInfoWidget(
-          title: 'السيرة الذاتية',
+          title: 'cv'.tr(),
           iconPath: AppAssets.cvIcon,
           isWithEdit: false,
           onTap: () {
@@ -48,7 +49,7 @@ class UserApplyInfo extends StatelessWidget {
           body: const CvWidget(isWithDelete: false,),
         ),
         AccountInfoWidget(
-          title: 'الخبرة الوظيفية',
+          title: 'years_of_experience'.tr(),
           iconPath: AppAssets.jobIcon,
           isWithEdit: false,
           onTap: () {
@@ -60,7 +61,7 @@ class UserApplyInfo extends StatelessWidget {
                 width: 100.w,
               ),
               Text(
-                'مدير',
+                'manager'.tr(),
                 style: AppText.fontSizeNormalTextStyle.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -78,7 +79,7 @@ class UserApplyInfo extends StatelessWidget {
           ),
         ),
         AccountInfoWidget(
-          title: 'التعليم',
+          title: 'education_level'.tr(),
           iconPath: AppAssets.schoolIcon,
           isWithEdit: false,
           onTap: () {
@@ -108,22 +109,7 @@ class UserApplyInfo extends StatelessWidget {
           ),
         ),
         AccountInfoWidget(
-          title: 'مستوى التعليم',
-          iconPath: AppAssets.schoolIcon,
-          isWithEdit: false,
-          onTap: () {
-          },
-          body: Row(
-            children: [
-              Text(
-                'ماجستير',
-                style: AppText.fontSizeNormalTextStyle,
-              ),
-            ],
-          ),
-        ),
-        AccountInfoWidget(
-          title: 'المهارات',
+          title: 'skills'.tr(),
           iconPath: AppAssets.skillsIcon,
           isWithEdit: false,
           onTap: () {
@@ -131,7 +117,7 @@ class UserApplyInfo extends StatelessWidget {
           body: const SkillsWidget(isWithEdit: false,),
         ),
         AccountInfoWidget(
-          title: 'اللغات',
+          title: 'languages'.tr(),
           iconPath: AppAssets.languageIcon,
           isWithEdit: false,
           onTap: () {
@@ -140,7 +126,7 @@ class UserApplyInfo extends StatelessWidget {
           body: LanguagesListWidget(),
         ),
         AccountInfoWidget(
-          title: 'التقديرات',
+          title: 'awards'.tr(),
           iconPath: AppAssets.goodIcon,
           isWithEdit: false,
           onTap: () {

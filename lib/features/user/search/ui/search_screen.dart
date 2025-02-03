@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,7 +57,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         children: [
                           Expanded(
                             child: Text(
-                              'البحث',
+                              'search'.tr(),
                               textAlign: TextAlign.center,
                               style: AppText.fontSizeMediumTextStyle.copyWith(
                                 color: AppColors.white,
@@ -71,7 +72,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         padding: PaddingInsets.bigPaddingHorizontal,
                         child: CustomTextField(
                           controller: TextEditingController(),
-                          hintText: 'البحث',
+                          hintText: 'search'.tr(),
                           isWithBorder: false,
                         ),
                       ),

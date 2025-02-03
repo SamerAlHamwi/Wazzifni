@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:wazzifni/features/user/auth/welcome/ui/welcome_screen.dart';
 
 import '../../../../../core/common/style/gaps.dart';
 import '../../../../../core/common/style/padding_insets.dart';
@@ -59,7 +60,7 @@ class CompanyJobsAppBar extends StatelessWidget {
                         if (value == 'edit') {
                           // Implement edit action
                         } else if (value == 'logout') {
-                          // Implement logout action
+                          Navigation.pushReplacement(const WelcomeScreen());
                         }
                       },
                       itemBuilder: (BuildContext context) {

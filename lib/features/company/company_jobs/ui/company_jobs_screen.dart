@@ -1,14 +1,11 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/common/style/gaps.dart';
 import '../../../../core/common/style/padding_insets.dart';
-import '../../../../core/constants/app_assets.dart';
-import '../../../../core/constants/app_textStyle.dart';
-import '../../../../core/constants/appcolors.dart';
-import '../../../../core/utils/Navigation/Navigation.dart';
 import '../../../../core/widgets/pages/background_page.dart';
 import '../../../user/jobs/ui/widgets/job_card_widget.dart';
-import '../../user_apply/ui/user_apply_screen.dart';
 import 'widgets/company_jobs_appbar.dart';
 import 'widgets/user_apply_card.dart';
 

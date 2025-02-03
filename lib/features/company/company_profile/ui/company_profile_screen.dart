@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
@@ -65,18 +66,18 @@ class CompanyProfile extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const CompanyInfoBox(
-                    title: 'عدد الموظفين',
+                  CompanyInfoBox(
+                    title: 'number_of_employees'.tr(),
                     subTitle: '٣٣ موظف',
                   ),
                   Gaps.hGap2,
-                  const CompanyInfoBox(
-                    title: 'مقر الشركة',
+                  CompanyInfoBox(
+                    title: 'company_location'.tr(),
                     subTitle: 'بغداد،العراق',
                   ),
                   Gaps.hGap2,
-                  const CompanyInfoBox(
-                    title: 'تاريخ التأسيس',
+                  CompanyInfoBox(
+                    title: 'company_establishment_date'.tr(),
                     subTitle: '1998',
                   ),
                 ],
@@ -91,7 +92,7 @@ class CompanyProfile extends StatelessWidget {
                 children: [
                   SizedBox(width: 100.w,),
                   Text(
-                    'الموقع الالكتروني',
+                    'company_website2'.tr(),
                     style: AppText.fontSizeMediumTextStyle.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -112,7 +113,7 @@ class CompanyProfile extends StatelessWidget {
                 children: [
                   SizedBox(width: 100.w,),
                   Text(
-                    'اختصاص الشركة',
+                    'company_specialization'.tr(),
                     style: AppText.fontSizeMediumTextStyle.copyWith(
                       fontWeight: FontWeight.bold,
                     ),

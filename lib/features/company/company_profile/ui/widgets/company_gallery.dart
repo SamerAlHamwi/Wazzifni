@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/common/style/gaps.dart';
@@ -20,7 +21,7 @@ class CompanyGallery extends StatelessWidget {
       children: [
         SizedBox(width: 100.w,),
         Text(
-          'معرض الشركة',
+          'company_gallery'.tr(),
           style: AppText.fontSizeNormalTextStyle.copyWith(
             fontWeight: FontWeight.bold,
           ),

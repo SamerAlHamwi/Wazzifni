@@ -3,8 +3,8 @@
 
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/common/style/gaps.dart';
 import '../../../../../core/common/style/padding_insets.dart';
 import '../../../../../core/widgets/custom_widgets/list_title_widget.dart';
 import '../../../company_jobs/ui/widgets/user_apply_card.dart';
@@ -18,7 +18,7 @@ class LatestCompanyAppliesWidget extends StatelessWidget {
     return Column(
       children: [
         TitleListWidget(
-          title: 'طلبات التوظيف',
+          title: 'job_applications'.tr(),
           onTap: (){},
         ),
         const Padding(

@@ -1,6 +1,7 @@
 
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/common/style/gaps.dart';
@@ -88,7 +89,7 @@ class UserApplyCard extends StatelessWidget {
                       PopupMenuItem(
                         value: 'edit',
                         child: Text(
-                          'قبول الموظف',
+                          'approve_employee',
                           style: AppText
                               .fontSizeNormalTextStyle,
                         ),
@@ -96,7 +97,7 @@ class UserApplyCard extends StatelessWidget {
                       PopupMenuItem(
                         value: 'delete',
                         child: Text(
-                          'حذف',
+                          'delete'.tr(),
                           style: AppText
                               .fontSizeNormalTextStyle,
                         ),

@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
@@ -19,7 +20,7 @@ class ExtraAddJobScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBarPage(
-      title: 'إضافة طلب توظيف',
+      title: 'add_job_request'.tr(),
       body: SingleChildScrollView(
         child: Padding(
           padding: PaddingInsets.extraBigPaddingAll,
@@ -27,25 +28,25 @@ class ExtraAddJobScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const CustomWrapExpansionTile(
-                title: "الدرجة العلمية",
+              CustomWrapExpansionTile(
+                title: "academic_degree".tr(),
                 items: [
-                  'بكالوريوس',
-                  'دكتوراه',
-                  'ثانوية',
-                  'إعدادبة',
+                  'phd'.tr(),
+                  'bachelor'.tr(),
+                  'high_school'.tr(),
+                  'middle_school'.tr(),
                 ],
                 isExpanded: true,
               ),
               Gaps.vGap1,
-              const CustomSliderWidget(
-                title: 'عدد سنوات الخبرة',
+              CustomSliderWidget(
+                title: 'years_of_experience'.tr(),
                 max: 10,
                 min: 1,
               ),
               Gaps.vGap8,
               CustomButton(
-                text: 'نشر',
+                text: 'publish'.tr(),
                 onTap: (){
                   Navigation.pushReplacement(const CompanyRootScreen());
                 },

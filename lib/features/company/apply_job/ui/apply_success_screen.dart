@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
@@ -45,19 +46,19 @@ class ApplySuccessScreen extends StatelessWidget {
                 height: 40.w,
               ),
               Text(
-                'نجاح',
+                'success'.tr(),
                 style: AppText.fontSizeMediumTextStyle.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Gaps.vGap2,
               Text(
-                'مبروك لقد تم ارسال طلبك',
+                'request_sent'.tr(),
                 style: AppText.fontSizeNormalTextStyle,
               ),
               Gaps.vGap4,
               CustomButton(
-                text: 'ايجاد وظائف مشابهة',
+                text: 'find_similar'.tr(),
                 isSecondaryGradient: true,
                 onTap: (){
                   Navigation.push(const UserRootScreen());
@@ -65,7 +66,7 @@ class ApplySuccessScreen extends StatelessWidget {
               ),
               Gaps.vGap2,
               CustomButton(
-                text: 'العودة للرئيسية',
+                text: 'back_to_home'.tr(),
                 onTap: (){
                   Navigation.push(const UserRootScreen());
                 },
