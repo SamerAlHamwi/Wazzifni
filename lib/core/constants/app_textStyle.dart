@@ -6,7 +6,7 @@ import 'appcolors.dart';
 class AppText {
   AppText._();
 
-  static double get  fontSizeExtraLarge=> 30.0;
+  static double get  fontSizeExtraLarge=> 26.0;
   static double get  fontSizeLarge=> 18.0;
   static double get  fontSizeMedium => 16.0;
   static double get  fontSizeNormal => 14.0;

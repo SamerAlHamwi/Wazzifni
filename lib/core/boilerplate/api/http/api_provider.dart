@@ -5,8 +5,11 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:wazzifni/core/boilerplate/api/http/api_urls.dart';
+import 'package:wazzifni/core/constants/constants.dart';
+import '../../../utils/utils.dart';
 import '../core_models/models_factory.dart';
 import '../errors/bad_request_error.dart';
 import '../errors/base_error.dart';
@@ -23,6 +26,7 @@ import '../errors/timeout_error.dart';
 import '../errors/unauthorized_error.dart';
 import '../errors/unknown_error.dart';
 import 'http_method.dart';
+import 'package:http_parser/http_parser.dart';
 
 
 class ApiProvider {
@@ -89,31 +93,74 @@ class ApiProvider {
 
     // Couldn't reach out the server
     on SocketException catch (e, stacktrace) {
-      return Left(SocketError());
+      return const Left(SocketError(message: 'please check your connection'));
     }
   }
 
   static Future<Either<BaseError, T>> sendObjectRequest<T>({
     required HttpMethod method,
     required String url,
-    Map<String, dynamic>? data,
+    data, //Map<String, dynamic>?
     Map<String, String>? headers,
     Map<String, dynamic>? queryParameters,
+    Map<String, String>? files,
     CancelToken? cancelToken,
     required String strString,
   }) async {
     try {
 
-      dio.options.headers = headers;
+      dio.interceptors.add(RetryInterceptor(
+        dio: dio,
+        logPrint: print,
+        retries: 1, // retry count
+        retryDelays: const [
+          Duration(seconds: 1),
+          Duration(seconds: 2),
+          Duration(seconds: 3),
+        ],
+      ));
+
+      Options options = Options(
+        headers: headers,
+        contentType: Headers.jsonContentType,
+        validateStatus: (status) => true,
+        sendTimeout: files == null ? const Duration(minutes: 2) : null,
+      );
+
+
+      if (files != null && files.isNotEmpty) {
+        headers!.remove(HEADER_CONTENT_TYPE);
+        FormData formData = FormData.fromMap(data ?? {});
+
+        for (var entry in files.entries) {
+          if (entry.value.isNotEmpty) {
+            formData.files.add(
+              MapEntry(
+                entry.key,
+                await MultipartFile.fromFile(
+                  entry.value,
+                  filename: entry.value.split('/').last,
+                  contentType: MediaType("image", "jpeg"),
+                ),
+              ),
+            );
+          }
+        }
+        data = formData;  // Assign FormData instead of a map
+      } else {
+        data = data ?? {}; // Keep it as a JSON map if no files exist
+      }
+
+
 
       Response response;
-
 
       switch (method) {
         case HttpMethod.GET:
           response = await dio.get(
             url,
             queryParameters: queryParameters,
+            options: options,
           );
           break;
         case HttpMethod.POST:
@@ -121,6 +168,7 @@ class ApiProvider {
             url,
             data: data,
             queryParameters: queryParameters ?? {},
+            options: options,
           );
 
           break;
@@ -129,6 +177,7 @@ class ApiProvider {
             url,
             data: data,
             queryParameters: queryParameters,
+            options: options,
           );
           break;
         case HttpMethod.DELETE:
@@ -136,6 +185,7 @@ class ApiProvider {
             url,
             data: data,
             queryParameters: queryParameters,
+            options: options,
           );
           break;
       }
@@ -164,20 +214,20 @@ class ApiProvider {
           if (decodedJson['result'] != null) {
             return Right(ModelsFactory.getInstance()!.createModel<T>(decodedJson, strString));
           } else {
-            return Left(CustomError(
-              message: 'Data Not Found',
+            return const Left(CustomError(
+              errorMessage: 'Data Not Found',
             ));
           }
         } else {
           return Left(CustomError(
-            message: decodedJson['error']['message'],
+            errorMessage: decodedJson['error']['message'],
           ));
         }
         // Return the http response with actual data
       } else {
-        // Utils.showToast(decodedJson['error']['message'] ?? '');
+        Utils.showToast(decodedJson['error']['message'] ?? '');
         return Left(CustomError(
-          message: decodedJson['error']['message'],
+          errorMessage: decodedJson['error']['message'],
         ));
       }
     }
@@ -189,7 +239,7 @@ class ApiProvider {
 
     // Couldn't reach out the server
     on SocketException catch (e, stacktrace) {
-      return Left(SocketError());
+      return const Left(SocketError(message: 'please check your connection'));
     }
   }
 
@@ -204,6 +254,7 @@ class ApiProvider {
     try {
 
       dio.options.headers = headers;
+      dio.options.validateStatus = (status) => true;
 
       // Get the response from the server
       Response response;
@@ -253,14 +304,14 @@ class ApiProvider {
           return const Right(true);
         } else {
           return Left(CustomError(
-            message: decodedJson['errors'],
+            errorMessage: decodedJson['errors'],
           ));
         }
       }
       // Return the http response with actual data
       else {
         return Left(CustomError(
-          message: decodedJson['errors'],
+          errorMessage: decodedJson['errors'],
         ));
       }
     }
@@ -272,7 +323,7 @@ class ApiProvider {
 
     // Couldn't reach out the server
     on SocketException catch (e, stacktrace) {
-      return Left(SocketError());
+      return const Left(SocketError(message: 'please check your connection'));
     }
   }
 
@@ -286,6 +337,8 @@ class ApiProvider {
   }) async {
     try {
       dio.options.headers = headers;
+      dio.options.validateStatus = (status) => true;
+
 
       Response response;
       switch (method) {
@@ -330,40 +383,39 @@ class ApiProvider {
       if (decodedJson['result'] == false || decodedJson['result'] == true) decodedJson['result'] = {'': ''};
       if ((response.statusCode)! > 199 && (response.statusCode)! < 300) {
         if (decodedJson['success'] == true) {
-          return Right(decodedJson['data']);
+          return Right(decodedJson['data'] ?? true);
         } else {
           return Left(CustomError(
-            message: decodedJson['errors'],
+            errorMessage: decodedJson['errors'],
           ));
         }
       }
       // Return the http response with actual data
       else {
         return Left(CustomError(
-          message: decodedJson['errors'],
+          errorMessage: decodedJson['errors'],
         ));
       }
     }
 
     // Handling errors
-    on DioError catch (e) {
+    on DioException catch (e) {
       return Left(handleDioError(e));
     }
 
-    // Couldn't reach out the server
     on SocketException catch (e, stacktrace) {
-      return Left(SocketError());
+      return const Left(SocketError(message: 'please check your connection'));
     }
   }
 
   static void printWrapped(String text) {
-    final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
+    final pattern = RegExp('.{1,800}');
     pattern.allMatches(text).forEach((match) => print(match.group(0)));
   }
 
-  static BaseError handleDioError(DioError error) {
+  static BaseError handleDioError(DioException error) {
     if (error.type != DioExceptionType.unknown) {
-      if (error is SocketException) return SocketError();
+      if (error is SocketException) return const SocketError(message: 'please check your connection');
       switch (error.response!.statusCode) {
         case 400:
           String errors = '';
@@ -372,28 +424,29 @@ class ApiProvider {
           } else {
             errors = error.response!.data['error']['message'];
           }
-          return BadRequestError(); //message: error.response!.data['error']['message']
+          return BadRequestError(message: error.response!.data['error']['message']);
         case 401:
           return UnauthorizedError();
         case 403:
           return ForbiddenError();
         case 404:
-          return NotFoundError(); //message: error.message!
+          return NotFoundError(message: error.message!);
         case 409:
-          return ConflictError(); //message: error.response!.data['error']['message'], code: error.response!.data['code']
+          return ConflictError(message: error.response!.data['error']['message'], code: error.response!.data['code']);
         case 500:
           return InternalServerError();
         default:
-          return HttpError(); //message: error.response!.data['error']['message']
+          return HttpError(message: error.response!.data['error']['message']);
       }
+      return const NetError(message: 'please check your connection');
     } else if (error.type == DioExceptionType.connectionTimeout ||
         error.type == DioExceptionType.sendTimeout ||
         error.type == DioExceptionType.receiveTimeout) {
-      return TimeoutError(); //message: S.of(Keys.navigatorKey.currentContext!).please_check_your_connection
+      return const TimeoutError(errorMessage: 'please_check_your_connection');
     } else if (error.type == DioExceptionType.cancel) {
       return CancelError();
     } else {
-      return UnknownError(); //errorMessage: S.of(Keys.navigatorKey.currentContext!).please_check_your_connection
+      return const UnknownError(errorMessage: 'please_check_your_connection');
     }
   }
 }

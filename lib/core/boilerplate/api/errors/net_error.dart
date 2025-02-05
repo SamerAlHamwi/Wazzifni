@@ -1,5 +1,7 @@
+import 'http_error.dart';
 
-import 'connection_error.dart';
-
-
-class NetError extends ConnectionError {}
+class NetError extends HttpError {
+  const NetError({required this.message});
+  @override
+  final String message;
+}

@@ -16,6 +16,7 @@ import 'features/company/user_apply/ui/user_apply_screen.dart';
 import 'features/user/filter/ui/filter_screen.dart';
 import 'features/user/home/ui/root_screen.dart';
 import 'features/user/search/ui/search_screen.dart';
+import 'features/user/splash/ui/splash_screen.dart';
 
 
 void main() async {
@@ -67,7 +68,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Wazzifni',
       theme: AppTheme.theme,
-      home: const WelcomeScreen(),
+      home: const SplashScreen(),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,

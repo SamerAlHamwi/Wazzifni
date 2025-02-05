@@ -1,8 +1,7 @@
-import 'http_error.dart';
+import './http_error.dart';
 
 class BadRequestError extends HttpError {
+  const BadRequestError({required this.message});
   @override
-  String? message = 'bad_request_error';
-
-  BadRequestError();
+  final String message;
 }

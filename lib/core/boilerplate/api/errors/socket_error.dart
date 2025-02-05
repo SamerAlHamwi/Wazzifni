@@ -1,3 +1,7 @@
-import 'connection_error.dart';
+import 'http_error.dart';
 
-class SocketError extends ConnectionError {}
+class SocketError extends HttpError {
+  const SocketError({required this.message});
+  @override
+  final String message;
+}

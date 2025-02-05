@@ -20,19 +20,17 @@ abstract class RemoteDataSource {
     Map<String, dynamic>? data,
     String? language,
     bool withAuthentication = false,
+    Map<String, String>? files,
   }) async {
     ModelsFactory.getInstance()!.registerModel(responseStr, converter);
     final Map<String, String> headers = {};
-    // late UserController userController = Provider.of<UserController>(
-    //     Keys.navigatorKey.currentContext!,
-    //     listen: false);
+
     // if (withAuthentication) {
     //   headers.putIfAbsent("Authorization",
     //           () => 'Bearer ${userController.currentUser.userToken}');
     // }
     //
-    // headers.putIfAbsent("Accept-Language",
-    //         () => language ?? AppSharedPreferences.appLanguageCode!);
+    headers.putIfAbsent("Accept-Language", () => language ?? 'ar');
     headers.putIfAbsent("accept", () => "text/plain");
 
     final response = await ApiProvider.sendObjectRequest<Response>(
@@ -42,13 +40,13 @@ abstract class RemoteDataSource {
       queryParameters: queryParameters,
       data: data,
       strString: responseStr,
+      files: files,
     );
 
     if (response.isLeft()) {
       return Left((response as Left<BaseError, Response>).value);
     } else {
-      debugPrint(
-          'response right ${(response as Right<BaseError, Response>).value}');
+      debugPrint('response right ${(response as Right<BaseError, Response>).value}');
       final resValue = response.value;
       return Right(resValue.data);
     }
@@ -71,8 +69,7 @@ abstract class RemoteDataSource {
     //   headers.putIfAbsent("Authorization",
     //           () => 'Bearer ${userController.currentUser.userToken}');
     // }
-    // headers.putIfAbsent(
-    //     "Accept-Language", () => AppSharedPreferences.appLanguageCode!);
+    headers.putIfAbsent("Accept-Language", () => 'ar');
     headers.putIfAbsent("Content-Type", () => "application/json");
 
     final response = await ApiProvider.sendObjectWithOutResponseRequest(
@@ -83,10 +80,6 @@ abstract class RemoteDataSource {
       data: data,
     );
 
-    if (kDebugMode) {
-      //  print('is right : ${response.isRight()}');
-    }
-    //debugPrint('is right : ${response.isRight()}');
     if (response.isLeft()) {
       //  debugPrint('is left');
       return Left((response as Left<BaseError, bool>).value);
@@ -105,18 +98,15 @@ abstract class RemoteDataSource {
     bool withAuthentication = false,
   }) async {
     final Map<String, String> headers = {};
-    // late UserController userController = Provider.of<UserController>(
-    //     Keys.navigatorKey.currentContext!,
-    //     listen: false);
     // if (withAuthentication) {
     //   // await checkTokenValidation();
     //   //  final String token = CashHelper.getData(key: kACCESSTOKEN);
     //   headers.putIfAbsent("Authorization",
     //           () => 'Bearer ${userController.currentUser.userToken}');
     // }
-    // headers.putIfAbsent(
-    //     "Accept-Language", () => AppSharedPreferences.appLanguageCode!);
-    headers.putIfAbsent("Content-Type", () => "'application/json");
+    // headers.putIfAbsent("Content-Type", () => "'application/json");
+    headers.putIfAbsent("Accept", () => "application/json");
+    headers.putIfAbsent("Accept-Language", () => 'ar');
 
     final response = await ApiProvider.sendObjectWithResponseRequest(
       method: method,
@@ -126,12 +116,6 @@ abstract class RemoteDataSource {
       data: data,
     );
 
-    if (kDebugMode) {
-      //debugPrint('is right : ${response.isRight()}');
-    }
-    if (kDebugMode) {
-      //debugPrint('is right : ${response.isRight()}');
-    }
     if (response.isLeft()) {
       // debugPrint('is left');
       return Left((response as Left<BaseError, int>).value);

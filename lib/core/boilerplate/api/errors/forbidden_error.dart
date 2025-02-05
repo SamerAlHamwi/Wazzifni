@@ -1,3 +1,3 @@
-import 'http_error.dart';
+import './http_error.dart';
 
 class ForbiddenError extends HttpError {}

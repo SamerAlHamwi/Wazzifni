@@ -141,7 +141,14 @@
   "search": "البحث",
   "info": "التفاصيل",
   "employee": "موظف",
-  "company": "شركة"
+  "company": "شركة",
+
+
+  "validation": "---------------------------------",
+  "required": "هذا الحقل مطلوب",
+  "invalid_phone_number": "رقم الهاتف غير صالح",
+  "please_select_city": "الرجاء اختيار مدينة إقامتك",
+  "please_enter_pin": "الرجاء ادخال رمز التحقق"
 
 
 }

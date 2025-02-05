@@ -10,6 +10,7 @@ import '../../../../core/widgets/custom_widgets/custom_button.dart';
 import '../../../../core/widgets/pages/custom_appbar_page.dart';
 import '../../../company/auth/complete_company/ui/complete_company_screen.dart';
 import '../../auth/complete_account/ui/complete_account_screen.dart';
+import '../../home/ui/root_screen.dart';
 
 
 class PrivacyPolicyScreen extends StatelessWidget {
@@ -45,9 +46,9 @@ class PrivacyPolicyScreen extends StatelessWidget {
                 text: 'agree_and_continue'.tr(),
                 onTap: (){
                   if(isCompany){
-                    Navigation.push(const CompleteCompanyAccountScreen());
+                    // Navigation.push(const CompleteCompanyAccountScreen());
                   }else{
-                    Navigation.push(const CompleteAccountScreen());
+                    Navigation.pushReplacement(const UserRootScreen());
                   }
                 },
               ),

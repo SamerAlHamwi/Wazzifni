@@ -65,7 +65,7 @@ class EditProfileScreen extends StatelessWidget {
                               ),
                               child: Center(
                                 child: Text(
-                                  '+964',
+                                  '964',
                                   style: AppText.fontSizeNormalTextStyle.copyWith(
                                       color: AppColors.white,
                                       fontWeight: FontWeight.bold

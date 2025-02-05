@@ -1,5 +1,7 @@
-import 'http_error.dart';
+import './http_error.dart';
 
 class ConflictError extends HttpError {
-  ConflictError();
+  final int? code;
+
+  const ConflictError({required String message, this.code}) : super(message: message);
 }

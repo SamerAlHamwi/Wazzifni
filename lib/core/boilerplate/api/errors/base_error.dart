@@ -1,9 +1,13 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:equatable/equatable.dart';
 
-import '../core_models/base_result_model.dart';
+abstract class BaseError extends Equatable {
+  const BaseError({
+    this.message,
+  });
+  final String? message;
+}
 
-class BaseError extends BaseResultModel {
-  String? message = 'base_error';
-
-  BaseError({this.message});
+class MessageModel {
+  MessageModel({required this.message});
+  final String message;
 }
