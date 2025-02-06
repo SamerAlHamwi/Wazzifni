@@ -135,7 +135,7 @@ class _FilterScreenState extends State<FilterScreen> {
               CustomButton(
                 text: 'continue'.tr(),
                 onTap: (){
-                  Navigation.push(const CompleteAccountScreen());
+
                 },
               ),
 

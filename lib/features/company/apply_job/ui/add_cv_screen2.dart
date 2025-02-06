@@ -55,7 +55,7 @@ class ApplyCv2Screen extends StatelessWidget {
                 style: AppText.fontSizeNormalTextStyle,
               ),
               Gaps.vGap2,
-              const CvWidget(),
+              CvWidget(),
               Gaps.vGap4,
               Text(
                 'extra_info'.tr(),

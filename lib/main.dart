@@ -13,6 +13,8 @@ import 'core/constants/app_settings.dart';
 import 'features/company/add_job/ui/add_job_screen.dart';
 import 'features/company/company_home/ui/company_root_screen.dart';
 import 'features/company/user_apply/ui/user_apply_screen.dart';
+import 'features/user/auth/complete_account/ui/complete_account_screen.dart';
+import 'features/user/auth/login/data/use_case/login_use_case.dart';
 import 'features/user/filter/ui/filter_screen.dart';
 import 'features/user/home/ui/root_screen.dart';
 import 'features/user/search/ui/search_screen.dart';
@@ -69,6 +71,7 @@ class MyApp extends StatelessWidget {
       title: 'Wazzifni',
       theme: AppTheme.theme,
       home: const SplashScreen(),
+      // home: CompleteAccountScreen(loginParams: LoginParams(),),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,

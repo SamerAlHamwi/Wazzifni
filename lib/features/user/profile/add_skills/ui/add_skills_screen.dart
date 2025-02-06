@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:wazzifni/features/user/profile/add_skills/ui/widgets/skills_widget.dart';
 
+
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:wazzifni/core/utils/Navigation/Navigation.dart';
+import 'package:wazzifni/features/user/profile/add_skills/ui/widgets/skills_widget.dart';
 import '../../../../../core/common/style/gaps.dart';
 import '../../../../../core/common/style/padding_insets.dart';
 import '../../../../../core/constants/app_textStyle.dart';
@@ -9,7 +12,9 @@ import '../../../../../core/widgets/custom_widgets/custom_button.dart';
 import '../../../../../core/widgets/pages/profile_page.dart';
 
 class AddSkillScreen extends StatefulWidget {
-  const AddSkillScreen({super.key});
+  const AddSkillScreen({super.key,this.selectedSkills});
+
+  final List<int>? selectedSkills;
 
   @override
   State<AddSkillScreen> createState() => _AddSkillScreenState();
@@ -17,6 +22,20 @@ class AddSkillScreen extends StatefulWidget {
 
 class _AddSkillScreenState extends State<AddSkillScreen> {
 
+  List<int> skills = [];
+
+  @override
+  void initState() {
+    super.initState();
+    initData();
+  }
+
+  initData(){
+    if(widget.selectedSkills != null){
+      skills.addAll(widget.selectedSkills ?? []);
+      setState(() {});
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +50,15 @@ class _AddSkillScreenState extends State<AddSkillScreen> {
               children: [
                 IconButton(
                   icon: const Icon(Icons.arrow_back_outlined,
-                      color: AppColors.black),
+                      color: AppColors.black,
+                  ),
                   onPressed: () => Navigator.pop(context),
                 ),
               ],
             ),
             Gaps.vGap4,
             Text(
-              'إضافة مهاراتك',
+              'add_skills'.tr(),
               style: AppText.fontSizeMediumTextStyle.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -48,17 +68,24 @@ class _AddSkillScreenState extends State<AddSkillScreen> {
 
             Gaps.vGap2,
             // Skill Tags
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: SkillsWidget(),
+            Padding(
+              padding: PaddingInsets.normalPaddingHorizontal,
+              child: SkillsWidget(
+                selectedSkills: skills,
+                onChanged: (List<int> selectedSkills){
+                  skills = selectedSkills;
+                },
+              ),
             ),
             Gaps.vGap4,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomButton(
-                  text: 'حفظ',
-                  onTap: () {},
+                  text: 'save'.tr(),
+                  onTap: () {
+                    Navigation.pop(value: skills);
+                  },
                 ),
               ],
             ),

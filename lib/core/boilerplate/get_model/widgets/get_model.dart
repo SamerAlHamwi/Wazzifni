@@ -87,14 +87,20 @@ class _GetModelState<Model> extends State<GetModel<Model>> {
   }
 
   buildModel(Model model) {
-    return FadeAnimation(
-      delay: 0.1,
-      child: RefreshIndicator(
-          child: widget.modelBuilder!(model),
-          onRefresh: () {
-            cubit?.getModel();
-            return Future.delayed(const Duration(seconds: 1));
-          }),
-    );
+    return RefreshIndicator(
+        child: widget.modelBuilder!(model),
+        onRefresh: () {
+          cubit?.getModel();
+          return Future.delayed(const Duration(seconds: 1));
+        });
+    //   FadeAnimation(
+    //   delay: 0.1,
+    //   child: RefreshIndicator(
+    //       child: widget.modelBuilder!(model),
+    //       onRefresh: () {
+    //         cubit?.getModel();
+    //         return Future.delayed(const Duration(seconds: 1));
+    //       }),
+    // );
   }
 }

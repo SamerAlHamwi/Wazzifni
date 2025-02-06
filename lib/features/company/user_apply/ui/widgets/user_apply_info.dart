@@ -46,7 +46,7 @@ class UserApplyInfo extends StatelessWidget {
           isWithEdit: false,
           onTap: () {
           },
-          body: const CvWidget(isWithDelete: false,),
+          body: CvWidget(isWithDelete: false,),
         ),
         AccountInfoWidget(
           title: 'years_of_experience'.tr(),
@@ -114,7 +114,12 @@ class UserApplyInfo extends StatelessWidget {
           isWithEdit: false,
           onTap: () {
           },
-          body: const SkillsWidget(isWithEdit: false,),
+          body: SkillsWidget(
+            isWithEdit: false,
+            onChanged: (List<int> selectedSkills){
+
+            },
+          ),
         ),
         AccountInfoWidget(
           title: 'languages'.tr(),

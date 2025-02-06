@@ -104,6 +104,7 @@ class ApiProvider {
     Map<String, String>? headers,
     Map<String, dynamic>? queryParameters,
     Map<String, String>? files,
+    bool isImageType = true,
     CancelToken? cancelToken,
     required String strString,
   }) async {
@@ -140,7 +141,7 @@ class ApiProvider {
                 await MultipartFile.fromFile(
                   entry.value,
                   filename: entry.value.split('/').last,
-                  contentType: MediaType("image", "jpeg"),
+                  contentType: isImageType ? MediaType("image", "jpeg") : MediaType("application", "pdf"),
                 ),
               ),
             );

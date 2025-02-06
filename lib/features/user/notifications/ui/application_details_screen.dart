@@ -120,8 +120,9 @@ class _ApplicationDetailsScreenState extends State<ApplicationDetailsScreen> {
                         style: AppText.fontSizeNormalTextStyle,
                       ),
                       Gaps.vGap2,
-                      const CvWidget(
+                      CvWidget(
                         isWithDelete: false,
+                        filePath: '',
                       ),
                     ],
                   ),

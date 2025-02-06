@@ -64,16 +64,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         title: 'السيرة الذاتية',
                         iconPath: AppAssets.cvIcon,
                         onTap: () {
-                          Navigation.push(const AddResumeScreen());
+                          Navigation.push(
+                              AddResumeScreen(
+                                onChanged: (value){
+
+                                },
+                              )
+                          );
                         },
-                        body: const CvWidget(isWithDelete: false,),
+                        body: CvWidget(isWithDelete: false,),
                       ),
                       AccountInfoWidget(
                         title: 'الخبرة الوظيفية',
                         iconPath: AppAssets.jobIcon,
                         isWithAdd: true,
                         onTap: () {
-                          Navigation.push(AddWorkScreen());
+                          Navigation.push(const AddWorkScreen());
                         },
                         body: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +110,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         iconPath: AppAssets.schoolIcon,
                         isWithAdd: true,
                         onTap: () {
-                          Navigation.push(AddEducationScreen());
+                          Navigation.push(const AddEducationScreen());
                         },
                         body: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,7 +157,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         onTap: () {
                           Navigation.push(const AddSkillScreen());
                         },
-                        body: const SkillsWidget(isWithEdit: false,),
+                        body: SkillsWidget(isWithEdit: false, onChanged: (List<int> skills) {  },),
                       ),
                       AccountInfoWidget(
                         title: 'اللغات',

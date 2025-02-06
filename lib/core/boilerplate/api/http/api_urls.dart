@@ -7,6 +7,7 @@ class ApiURLs {
 
   ///User
   static String checkVersion = '$baseUrl/api/services/app/Configuration/HomeChecker';
+  static String createUserProfile = '$baseUrl/api/services/app/Profile/Update';
 
   ///Auth
   static String login = '$baseUrl/api/services/app/Account/SignInWithPhoneNumber';
@@ -18,9 +19,14 @@ class ApiURLs {
   ///Cities
   static String allCities = '$baseUrl/api/services/app/City/GetAll';
 
+  ///Languages
+  static String allLanguages = '$baseUrl/api/services/app/SpokenLanguages/GetAll';
+
+  ///Skills
+  static String allSkills = '$baseUrl/api/services/app/Skill/GetAll';
+
   ///Company
   static String createCompanyAccount = '$baseUrl/api/services/app/Company/Create';
-
 
   ///Attachment
   static String uploadAttachment = '$baseUrl/api/services/app/Attachment/Upload';

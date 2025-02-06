@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/constants/appcolors.dart';
 import '../../../../../../core/utils/utils.dart';
@@ -20,10 +21,10 @@ class CompanyGalleryWidget extends StatefulWidget {
 class _CompanyGalleryWidgetState extends State<CompanyGalleryWidget> {
 
   void _pickImages() async {
-    List<File> images = await Utils.pickFiles(isMulti: true);
+    List<PlatformFile> images = await Utils.pickFiles(isMulti: true);
     if (images.isNotEmpty) {
       setState(() {
-        widget.imagePaths.addAll(images.map((e) => e.path));
+        widget.imagePaths.addAll(images.map((e) => e.path!));
       });
       widget.onChanged(widget.imagePaths);
     }

@@ -1,5 +1,3 @@
-
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/data/common_data.dart';
@@ -20,11 +18,11 @@ import '../../../../../core/widgets/custom_widgets/custom_textfield.dart';
 import '../../../../../core/widgets/pages/background_page.dart';
 import '../../../home/ui/root_screen.dart';
 import '../../../privacy_policy/ui/privacy_policy_screen.dart';
+import '../../complete_account/ui/complete_account_screen.dart';
 import '../../login/data/model/create_account_response.dart';
 import '../../login/data/repository/auth_repository.dart';
 import '../../login/data/use_case/create_account_use_case.dart';
 import '../../login/data/use_case/login_use_case.dart';
-
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key, required this.loginParams});
@@ -36,7 +34,6 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-
   TextEditingController nameController = TextEditingController();
   TextEditingController codeController = TextEditingController();
   int? cityId;
@@ -80,14 +77,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 Gaps.vGap2,
                 CustomTextField(
-                    controller: nameController,
-                    labelText: 'full_name'.tr(),
-                    validator: Validators.validateEmptyValue,
+                  controller: nameController,
+                  labelText: 'full_name'.tr(),
+                  validator: Validators.validateEmptyValue,
                 ),
                 Gaps.vGap1,
                 CustomDropdown(
                   labelText: 'location'.tr(),
-                  items: cityListModel.items!.map((e) => DropDownItem(id: e.id!,name: e.name ?? '')).toList(),
+                  items: cityListModel.items!
+                      .map((e) => DropDownItem(id: e.id!, name: e.name ?? ''))
+                      .toList(),
                   onChanged: (String selectedId) {
                     setState(() {
                       cityId = int.parse(selectedId);
@@ -96,8 +95,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 Gaps.vGap1,
                 CustomTextField(
-                    controller: codeController,
-                    labelText: 'invitation_code'.tr(),
+                  controller: codeController,
+                  labelText: 'invitation_code'.tr(),
                 ),
                 Gaps.vGap4,
                 CreateModel(
@@ -108,14 +107,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     );
                   },
                   onSuccess: (CreateUserModel model) {
-                    Navigation.pushReplacement(PrivacyPolicyScreen());
+                    Navigation.pushReplacement(
+                      CompleteAccountScreen(
+                        loginParams: widget.loginParams.copyWith(
+                          fullName: nameController.text.trim(),
+                          code: codeController.text.trim(),
+                          cityId: cityId,
+                        ),
+                      ),
+                    );
                   },
                   withValidation: false,
                   child: CustomButton(
                     text: 'register'.tr(),
                     onTap: () {
-                      if(_formKey.currentState!.validate()){
-                        if(cityId != null){
+                      if (_formKey.currentState!.validate()) {
+                        if (cityId != null) {
                           signUpCubit.createModel(
                             requestData: widget.loginParams.copyWith(
                               fullName: nameController.text.trim(),
@@ -123,7 +130,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               cityId: cityId,
                             ),
                           );
-                        }else{
+                        } else {
                           Utils.showToast('please_select_city'.tr());
                         }
                       }

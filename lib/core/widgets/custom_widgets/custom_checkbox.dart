@@ -9,9 +9,10 @@ import '../../constants/app_textStyle.dart';
 
 
 class RowCheckBox extends StatelessWidget {
-  const RowCheckBox({super.key, required this.title, required this.onChanged});
+  const RowCheckBox({super.key, required this.title, required this.onChanged, required this.value});
 
   final String title;
+  final bool value;
   final Function(bool value) onChanged;
 
   @override
@@ -19,6 +20,7 @@ class RowCheckBox extends StatelessWidget {
     return Row(
       children: [
         CustomCheckBox(
+          value: value,
           onChanged: onChanged,
         ),
         Gaps.hGap2,
@@ -34,9 +36,10 @@ class RowCheckBox extends StatelessWidget {
 
 
 class CustomCheckBox extends StatefulWidget {
-  CustomCheckBox({super.key, required this.onChanged});
+  CustomCheckBox({super.key, required this.onChanged,this.value});
 
   Function(bool value) onChanged;
+  bool? value;
 
   @override
   State<CustomCheckBox> createState() => _CustomCheckBoxState();
@@ -44,6 +47,18 @@ class CustomCheckBox extends StatefulWidget {
 
 class _CustomCheckBoxState extends State<CustomCheckBox> {
   bool isChecked = false;
+
+  @override
+  void initState() {
+    super.initState();
+    initData();
+  }
+
+  initData(){
+    setState(() {
+      isChecked = widget.value ?? false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,23 +1,32 @@
 
 
-
-
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
-import 'package:wazzifni/core/constants/app_assets.dart';
 import 'package:wazzifni/core/constants/appcolors.dart';
+import 'package:wazzifni/core/utils/Navigation/Navigation.dart';
+import 'package:wazzifni/core/widgets/image_widgets/custom_image.dart';
+import 'package:wazzifni/features/user/auth/login/data/model/language_model.dart';
 import '../../../../../core/constants/app_textStyle.dart';
 import '../../../../../core/widgets/custom_widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_widgets/custom_checkbox.dart';
+import '../../../../../core/widgets/custom_widgets/custom_slider_widget.dart';
 import '../../../../../core/widgets/pages/profile_page.dart';
 
 
-class SelectLanguageLevelScreen extends StatelessWidget {
-  SelectLanguageLevelScreen({super.key});
+class SelectLanguageLevelScreen extends StatefulWidget {
 
+  SelectLanguageLevelScreen({super.key,required this.languageModel});
+
+  LanguageModel? languageModel;
+
+  @override
+  State<SelectLanguageLevelScreen> createState() => _SelectLanguageLevelScreenState();
+}
+
+class _SelectLanguageLevelScreenState extends State<SelectLanguageLevelScreen> {
 
   final TextEditingController controller = TextEditingController();
 
@@ -44,7 +53,7 @@ class SelectLanguageLevelScreen extends StatelessWidget {
               ),
               Gaps.vGap4,
               Text(
-                'إضافة لغة',
+                'add_language'.tr(),
                 style: AppText.fontSizeMediumTextStyle.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -64,21 +73,21 @@ class SelectLanguageLevelScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'اللغة',
+                          'language'.tr(),
                           style: AppText.fontSizeNormalTextStyle.copyWith(
                             fontWeight: FontWeight.w600
                           ),
                         ),
                         Row(
                           children: [
-                            Image.asset(
-                              AppAssets.englishIcon,
-                              width: 35,
-                              height: 35,
+                            CustomImage.circular(
+                              radius: 35,
+                              isNetworkImage: true,
+                              image: widget.languageModel!.icon?.url!,
                             ),
                             Gaps.hGap2,
                             Text(
-                              'الإنجليزية',
+                              widget.languageModel!.displayName ?? '',
                               style: AppText.fontSizeNormalTextStyle,
                             ),
                           ],
@@ -93,9 +102,10 @@ class SelectLanguageLevelScreen extends StatelessWidget {
                     ),
                     Gaps.vGap2,
                     RowCheckBox(
-                        title: 'هل هذه اللغة الأساسية',
+                        title: 'main_language'.tr(),
+                        value: widget.languageModel!.isNative ?? false,
                         onChanged: (value){
-
+                          widget.languageModel!.isNative = value;
                         },
                     ),
                   ],
@@ -120,14 +130,19 @@ class SelectLanguageLevelScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'شفوياً',
-                        style: AppText.fontSizeNormalTextStyle.copyWith(
+                        'speak'.tr(),
+                        style: AppText.fontSizeMediumTextStyle.copyWith(
                             fontWeight: FontWeight.w600
                         ),
                       ),
-                      Text(
-                        'المستوى 10',
-                        style: AppText.fontSizeNormalTextStyle,
+                      CustomSliderWidget(
+                        title: 'level'.tr(),
+                        max: 10,
+                        min: 1,
+                        currentValue: widget.languageModel!.oralLevel?.toDouble(),
+                        onChanged: (value){
+                          widget.languageModel!.oralLevel = value;
+                        },
                       ),
                       Gaps.vGap1,
                       Row(
@@ -142,14 +157,19 @@ class SelectLanguageLevelScreen extends StatelessWidget {
                       ),
                       Gaps.vGap2,
                       Text(
-                        'كتابياًً',
+                        'writing'.tr(),
                         style: AppText.fontSizeNormalTextStyle.copyWith(
                             fontWeight: FontWeight.w600
                         ),
                       ),
-                      Text(
-                        'المستوى 10',
-                        style: AppText.fontSizeNormalTextStyle,
+                      CustomSliderWidget(
+                        title: 'level'.tr(),
+                        max: 10,
+                        min: 1,
+                        currentValue: widget.languageModel!.writingLevel?.toDouble(),
+                        onChanged: (value){
+                          widget.languageModel!.writingLevel = value;
+                        },
                       ),
                     ],
                   ),
@@ -160,8 +180,10 @@ class SelectLanguageLevelScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomButton(
-                    text: 'حفظ',
-                    onTap: () {},
+                    text: 'save'.tr(),
+                    onTap: () {
+                      Navigation.pop(value: widget.languageModel);
+                    },
                   ),
                 ],
               ),

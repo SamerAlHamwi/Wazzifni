@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
 import 'package:wazzifni/core/utils/Navigation/Navigation.dart';
+import 'package:wazzifni/features/company/company_home/ui/company_root_screen.dart';
 import 'package:wazzifni/features/user/privacy_policy/ui/widgets/privacy_policy_item.dart';
 import '../../../../core/common/models/box_model.dart';
 import '../../../../core/widgets/custom_widgets/custom_button.dart';
@@ -46,13 +47,12 @@ class PrivacyPolicyScreen extends StatelessWidget {
                 text: 'agree_and_continue'.tr(),
                 onTap: (){
                   if(isCompany){
-                    // Navigation.push(const CompleteCompanyAccountScreen());
+                    Navigation.push(const CompanyRootScreen());
                   }else{
                     Navigation.pushReplacement(const UserRootScreen());
                   }
                 },
               ),
-
             ],
           ),
         ),

@@ -43,6 +43,9 @@ class ExtraAddJobScreen extends StatelessWidget {
                 title: 'years_of_experience'.tr(),
                 max: 10,
                 min: 1,
+                onChanged: (value){
+
+                },
               ),
               Gaps.vGap8,
               CustomButton(

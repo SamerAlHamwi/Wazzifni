@@ -37,7 +37,7 @@ dependencies:
 
   # ui
   flutter_screenutil: ^5.9.3
-  simple_animations: ^4.0.2
+#  simple_animations: ^4.0.2
   carousel_slider: ^5.0.0
   cached_network_image: ^3.4.0
   flutter_svg: ^2.0.10+1

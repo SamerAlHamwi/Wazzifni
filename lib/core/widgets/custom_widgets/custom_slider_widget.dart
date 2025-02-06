@@ -11,18 +11,35 @@ class CustomSliderWidget extends StatefulWidget {
     required this.title,
     required this.min,
     required this.max,
+    this.currentValue,
+    required this.onChanged,
   });
 
   final bool isRequired;
   final String title;
   final double min, max;
+  final double? currentValue;
+  final Function(int) onChanged;
 
   @override
   State<CustomSliderWidget> createState() => _CustomSliderWidgetState();
 }
 
 class _CustomSliderWidgetState extends State<CustomSliderWidget> {
-  double _currentValue = 3;
+  double _currentValue = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    initData();
+  }
+
+  initData(){
+    if(widget.currentValue != null){
+      _currentValue = widget.currentValue!;
+      setState(() {});
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +83,7 @@ class _CustomSliderWidgetState extends State<CustomSliderWidget> {
                   inactiveColor: AppColors.subWhite,
                   label: _currentValue.toStringAsFixed(0),
                   onChanged: (double value) {
+                    widget.onChanged(value.toInt());
                     setState(() {
                       _currentValue = value;
                     });

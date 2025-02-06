@@ -22,7 +22,7 @@ class Utils{
     );
   }
 
-  static Future<List<File>> pickFiles({bool isMulti = false,bool isImages = true}) async {
+  static Future<List<PlatformFile>> pickFiles({bool isMulti = false,bool isImages = true}) async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
         allowMultiple: isMulti,
         type: FileType.custom,
@@ -30,8 +30,9 @@ class Utils{
     );
 
     if (result != null) {
-      List<File> files = result.paths.map((path) => File(path!)).toList();
-      return files;
+      // List<File> files = result.paths.map((path) => File(path!)).toList();
+      // String fileName = result.files.single.name;
+      return result.files;
     } else {
       return [];
     }

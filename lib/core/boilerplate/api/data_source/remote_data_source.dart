@@ -20,6 +20,7 @@ abstract class RemoteDataSource {
     Map<String, dynamic>? data,
     String? language,
     bool withAuthentication = false,
+    bool isImageType = true,
     Map<String, String>? files,
   }) async {
     ModelsFactory.getInstance()!.registerModel(responseStr, converter);
@@ -41,6 +42,7 @@ abstract class RemoteDataSource {
       data: data,
       strString: responseStr,
       files: files,
+      isImageType: isImageType,
     );
 
     if (response.isLeft()) {

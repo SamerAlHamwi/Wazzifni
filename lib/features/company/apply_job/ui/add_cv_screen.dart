@@ -6,6 +6,7 @@ import 'package:wazzifni/core/common/style/gaps.dart';
 import 'package:wazzifni/core/common/style/padding_insets.dart';
 import 'package:wazzifni/core/constants/app_assets.dart';
 import 'package:wazzifni/core/utils/Navigation/Navigation.dart';
+import 'package:wazzifni/features/company/apply_job/ui/widgets/cv_widget.dart';
 import '../../../../../core/constants/app_textStyle.dart';
 import '../../../../../core/constants/appcolors.dart';
 import '../../../../../core/widgets/pages/background_page.dart';
