@@ -1,9 +1,6 @@
 
 
 
-import 'dart:io';
-
-import 'package:wazzifni/core/boilerplate/api/core_models/empty_model.dart';
 import 'package:wazzifni/core/boilerplate/api/http/api_urls.dart';
 import 'package:wazzifni/features/user/auth/login/data/model/login_response.dart';
 import '../../../../../../core/boilerplate/api/data_source/remote_data_source.dart';
@@ -134,7 +131,11 @@ class AuthRepository extends CoreRepository {
   }
 
 
-  Future<Result<Attachments>> uploadImage({required String image,required int type}) async {
+  Future<Result<Attachments>> uploadImage({
+    required String image,
+    required int type,
+    bool isImageType = true,
+  }) async {
     final result = await RemoteDataSource.request(
       withAuthentication: false,
       url: ApiURLs.uploadAttachment,
@@ -143,7 +144,7 @@ class AuthRepository extends CoreRepository {
       converter: (json) => AttachmentsResponse.fromJson(json),
       responseStr: 'AttachmentsResponse',
       files: {'File': image},
-      isImageType: false,
+      isImageType: isImageType,
     );
     return call(result: result);
   }
@@ -166,7 +167,7 @@ class AuthRepository extends CoreRepository {
   Future<Result<UserProfileModel>> createUserProfileAccount({required CreateUserProfileParams params}) async {
 
     if(params.cvPath != null){
-      Result<Attachments> result = await uploadImage(image: params.cvPath!,type: AttachmentRefType.cv.index);
+      Result<Attachments> result = await uploadImage(image: params.cvPath!,type: AttachmentRefType.cv.index,isImageType: false);
       params.cvId = result.data!.id;
     }
 
